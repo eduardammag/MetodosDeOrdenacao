@@ -118,7 +118,7 @@ int main()
     // Inserindo elementos nas listas duplamente encadeadas
     for (int i = 0; i < iListSize; ++i)
     {
-        int randomValue = rand() % 100000; // Gera um número aleatório entre 0 e 99999
+        int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList1, randomValue);
     }
     
@@ -152,7 +152,7 @@ int main()
     // Inserindo elementos nas listas duplamente encadeadas
     for (int i = 0; i < iListSize; ++i)
     {
-        int randomValue = rand() % 100000; // Gera um número aleatório entre 0 e 99999
+        int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList2, randomValue);
     }
     
@@ -187,7 +187,7 @@ int main()
     // Inserindo elementos nas listas duplamente encadeadas
     for (int i = 0; i < iListSize; ++i)
     {
-        int randomValue = rand() % 100000; // Gera um número aleatório entre 0 e 99999
+        int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList3, randomValue);
     }
     
@@ -222,7 +222,7 @@ int main()
     // Inserindo elementos nas listas duplamente encadeadas
     for (int i = 0; i < iListSize; ++i)
     {
-        int randomValue = rand() % 100000; // Gera um número aleatório entre 0 e 99999
+        int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList4, randomValue);
     }
     
