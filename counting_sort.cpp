@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib> //por vezes é necessário para o uso do malloc
 #include <chrono> //para avaliar o desempenho do algoritmo
 #include <ctime> //para gerar números aleatórios
@@ -8,6 +9,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::ostream;
+using std::ofstream;
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
@@ -23,7 +26,7 @@ typedef struct Node
 
 //Protótipos das funções
 Node* createNode(int);
-void displayList(Node*);
+void displayList(Node*, ostream&);
 void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void deleteList(Node**);
@@ -32,6 +35,13 @@ void countingSort(Node*, int);
 
 int main()
 {
+    ofstream outFile("execution_times.txt");
+
+    if (!outFile) {
+        cout << "Erro ao abrir o arquivo." << endl;
+        return 1;
+    }
+    
     //testando se a função está ordenando corretamente
     Node* headAges = nullptr;
 
@@ -45,17 +55,19 @@ int main()
 
     int iAgesSize = 6;
 
-    cout << "Lista de idades original: "; 
-    displayList(headAges);  
+    outFile << "Lista de idades original: "; 
+    displayList(headAges, outFile);
+    outFile << endl; 
 
     countingSort(headAges, iAgesSize);
 
-    cout << "Lista de idades ordenada (Counting Sort): "; 
-    displayList(headAges);
+    outFile << "Lista de idades ordenada (Couting Sort): "; 
+    displayList(headAges, outFile);
+    outFile << endl;
 
     deleteList(&headAges);
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,17 +82,19 @@ int main()
 
     int iGradesSize = 5;
 
-    cout << "Lista de notas original: "; 
-    displayList(headGrades);  
+    outFile << "Lista de notas original: "; 
+    displayList(headGrades, outFile);
+    outFile << endl;
 
     countingSort(headGrades, iGradesSize);
 
-    cout << "Lista de notas ordenada (Counting Sort): "; 
-    displayList(headGrades);
+    outFile << "Lista de notas ordenada (Counting Sort): "; 
+    displayList(headGrades, outFile);
+    outFile << endl;
 
     deleteList(&headGrades);
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -94,17 +108,19 @@ int main()
 
     int iRandomNumbersSize = 5;
 
-    cout << "Lista de números aleatórios original: "; 
-    displayList(headRandomNumbers);  
+    outFile << "Lista de números aleatórios original: "; 
+    displayList(headRandomNumbers, outFile);
+    outFile << endl;  
 
     countingSort(headRandomNumbers, iRandomNumbersSize);
 
-    cout << "Lista de números aleatórios ordenada (Counting Sort): "; 
-    displayList(headRandomNumbers);
+    outFile << "Lista de números aleatórios ordenada (Couting Sort): "; 
+    displayList(headRandomNumbers, outFile);
+    outFile << endl;
 
     deleteList(&headRandomNumbers);
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -132,9 +148,9 @@ int main()
     
     auto timeDuration1 = duration_cast<nanoseconds>(timeStop1 - timeStart1);
     llTotalCountingSortTime += timeDuration1.count();
-    cout << "Tempo utilizado na ordenação da lista 1 (Counting Sort): " << timeDuration1.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 1 (Counting Sort): " << timeDuration1.count() << " nanosegundos." << endl;
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Node* headList2 = nullptr;
@@ -155,9 +171,9 @@ int main()
     
     auto timeDuration3 = duration_cast<nanoseconds>(timeStop3 - timeStart3);
     llTotalCountingSortTime += timeDuration3.count();
-    cout << "Tempo utilizado na ordenação da lista 2 (Counting Sort): " << timeDuration3.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 2 (Counting Sort): " << timeDuration3.count() << " nanosegundos." << endl;
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -179,9 +195,9 @@ int main()
     
     auto timeDuration5 = duration_cast<nanoseconds>(timeStop5 - timeStart5);
     llTotalCountingSortTime += timeDuration5.count();
-    cout << "Tempo utilizado na ordenação da lista 3 (Counting Sort): " << timeDuration5.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 3 (Counting Sort): " << timeDuration5.count() << " nanosegundos." << endl;
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -203,9 +219,9 @@ int main()
     
     auto timeDuration7 = duration_cast<nanoseconds>(timeStop7 - timeStart7);
     llTotalCountingSortTime += timeDuration7.count();
-    cout << "Tempo utilizado na ordenação da lista 4 (Counting Sort): " << timeDuration7.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 4 (Counting Sort): " << timeDuration7.count() << " nanosegundos." << endl;
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
 
@@ -213,9 +229,9 @@ int main()
     long long llAvgCountingSortTime = llTotalCountingSortTime / iNumLists;
 
     // Exibindo os resultados
-    cout << "Média do tempo utilizado na ordenação com Counting Sort: " << llAvgCountingSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Counting Sort: " << llAvgCountingSortTime << " nanosegundos." << endl;
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     return 0;
 }
@@ -232,7 +248,7 @@ Node* createNode(int iPayload)
 }
 
 // Função para exibir os elementos da lista
-void displayList(Node* node)
+void displayList(Node* node, ostream& os)
 {
     if (node == nullptr)
     {
@@ -243,21 +259,17 @@ void displayList(Node* node)
     if  (node -> ptrPrev != nullptr)
     {
         cout << "Meio ou Fim da Lista: Não é possível realizar displayList" << endl;
-        return; // Sai da função se o nó não for o primeiro na lista
-       
+        return; // Sai da função se o nó não for o primeiro na lista  
     }
     
-    Node* temp = node;
+    Node* currentNode = node;
      
-    cout << "Payload: ";
-    
-    while(temp != nullptr)
+    while (currentNode != nullptr)
     {
-        cout << temp -> iPayload<< " ";
-        temp = temp -> ptrNext;
+        os << currentNode->iPayload << " ";
+        currentNode = currentNode->ptrNext;
     }
-    
-    cout << endl;
+    os << endl;
 }
 
 // Função para inserir um novo nó no final da lista
