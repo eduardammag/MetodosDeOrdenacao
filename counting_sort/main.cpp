@@ -1,20 +1,13 @@
 #include "counting_sort.h"
 #include <iostream>
 #include <fstream>
-#include <cstdlib> //por vezes é necessário para o uso do malloc
-#include <chrono> //para avaliar o desempenho do algoritmo
-#include <ctime> //para gerar números aleatórios
+#include <cstdlib> // necessário para o uso do malloc
+#include <chrono>  // para avaliar o desempenho do algoritmo
+#include <ctime>   // para gerar números aleatórios
 
-using std::cout;
-using std::endl;
-using std::ostream;
-using std::ofstream;
-
-using std::chrono::high_resolution_clock;
-using std::chrono::duration_cast;
-using std::chrono::nanoseconds;
-
-
+// Usando o namespace std para simplificar a utilização
+using namespace std;
+using namespace std::chrono;
 
 int main()
 {
@@ -25,10 +18,10 @@ int main()
         return 1;
     }
     
-    //testando se a função está ordenando corretamente
+    // Testando se a função está ordenando corretamente
     Node* headAges = nullptr;
 
-    //Inserindo elementos na lista de idades (ordenei a lista com o pior caso, ou seja, de forma decrescente)
+    // Inserindo elementos na lista de idades (ordenei a lista com o pior caso, ou seja, de forma decrescente)
     insertEnd(&headAges, 100);
     insertEnd(&headAges, 97);
     insertEnd(&headAges, 89);
@@ -42,12 +35,14 @@ int main()
     displayList(headAges, outFile);
     outFile << endl; 
 
+    // Ordenando a lista usando Counting Sort
     countingSort(headAges, iAgesSize);
 
-    outFile << "Lista de idades ordenada (Couting Sort): "; 
+    outFile << "Lista de idades ordenada (Counting Sort): "; 
     displayList(headAges, outFile);
     outFile << endl;
 
+    // Limpando a lista
     deleteList(&headAges);
 
     outFile << "============================" << endl;
@@ -56,7 +51,7 @@ int main()
 
     Node* headGrades = nullptr;
 
-    //Inserindo elementos na lista de notas (coloquei a lista já ordenada para testar se bagunça ou imprime ela como está)
+    // Inserindo elementos na lista de notas (coloquei a lista já ordenada para testar se bagunça ou imprime ela como está)
     insertEnd(&headGrades, -1);
     insertEnd(&headGrades, 0);
     insertEnd(&headGrades, 2);
@@ -69,12 +64,14 @@ int main()
     displayList(headGrades, outFile);
     outFile << endl;
 
+    // Ordenando a lista usando Counting Sort
     countingSort(headGrades, iGradesSize);
 
     outFile << "Lista de notas ordenada (Counting Sort): "; 
     displayList(headGrades, outFile);
     outFile << endl;
 
+    // Limpando a lista
     deleteList(&headGrades);
 
     outFile << "============================" << endl;
@@ -83,6 +80,7 @@ int main()
 
     Node* headRandomNumbers = nullptr;
 
+    // Inserindo números aleatórios na lista
     insertEnd(&headRandomNumbers, -15);
     insertEnd(&headRandomNumbers, 27);
     insertEnd(&headRandomNumbers, 86);
@@ -95,39 +93,42 @@ int main()
     displayList(headRandomNumbers, outFile);
     outFile << endl;  
 
+    // Ordenando a lista usando Counting Sort
     countingSort(headRandomNumbers, iRandomNumbersSize);
 
-    outFile << "Lista de números aleatórios ordenada (Couting Sort): "; 
+    outFile << "Lista de números aleatórios ordenada (Counting Sort): "; 
     displayList(headRandomNumbers, outFile);
     outFile << endl;
 
+    // Limpando a lista
     deleteList(&headRandomNumbers);
 
     outFile << "============================" << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Definindo variáveis para fazer o tempo gasto em média com cada função ao ordenar as lista abaixo
+    // Definindo variáveis para medir o tempo gasto com cada função ao ordenar as listas abaixo
     long long llTotalCountingSortTime = 0;
     const int iNumLists = 4;
     const int iListSize = 15000;
     
-    //Gerando listas aleatórias com uma quantidade grande de elementos a fim de comparar o tempo gasto com a ordenação de cada lista
+    // Gerando listas aleatórias com uma quantidade grande de elementos para comparar o tempo gasto com a ordenação de cada lista
     Node* headList1 = nullptr;
 
     // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
 
-    // Inserindo elementos nas listas duplamente encadeadas
+    // Inserindo elementos na lista duplamente encadeada
     for (int i = 0; i < iListSize; ++i)
     {
         int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList1, randomValue);
     }
     
-    auto timeStart1 = high_resolution_clock::now();  //tempo antes de ordenar
+    // Medindo o tempo antes e depois de ordenar a lista
+    auto timeStart1 = high_resolution_clock::now();  
     countingSort(headList1, iListSize);
-    auto timeStop1 = high_resolution_clock::now();  //tempo depois de ordenar
+    auto timeStop1 = high_resolution_clock::now();  
     
     auto timeDuration1 = duration_cast<nanoseconds>(timeStop1 - timeStart1);
     llTotalCountingSortTime += timeDuration1.count();
@@ -141,16 +142,17 @@ int main()
     // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
 
-    // Inserindo elementos nas listas duplamente encadeadas
+    // Inserindo elementos na lista duplamente encadeada
     for (int i = 0; i < iListSize; ++i)
     {
         int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList2, randomValue);
     }
     
-    auto timeStart3 = high_resolution_clock::now();  //calcula o tempo antes de ordenar
+    // Medindo o tempo antes e depois de ordenar a lista
+    auto timeStart3 = high_resolution_clock::now();  
     countingSort(headList2, iListSize);
-    auto timeStop3 = high_resolution_clock::now();  //calcula o tempo depois de ordenar
+    auto timeStop3 = high_resolution_clock::now();  
     
     auto timeDuration3 = duration_cast<nanoseconds>(timeStop3 - timeStart3);
     llTotalCountingSortTime += timeDuration3.count();
@@ -165,16 +167,17 @@ int main()
     // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
 
-    // Inserindo elementos nas listas duplamente encadeadas
+    // Inserindo elementos na lista duplamente encadeada
     for (int i = 0; i < iListSize; ++i)
     {
-        int randomValue = 1+ rand() % 100; // Gera um número aleatório entre 1 e 100
+        int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList3, randomValue);
     }
     
-    auto timeStart5 = high_resolution_clock::now();  //calcula o tempo antes de ordenar
+    // Medindo o tempo antes e depois de ordenar a lista
+    auto timeStart5 = high_resolution_clock::now();  
     countingSort(headList3, iListSize);
-    auto timeStop5 = high_resolution_clock::now();  //calcula o tempo depois de ordenar
+    auto timeStop5 = high_resolution_clock::now();  
     
     auto timeDuration5 = duration_cast<nanoseconds>(timeStop5 - timeStart5);
     llTotalCountingSortTime += timeDuration5.count();
@@ -189,16 +192,17 @@ int main()
     // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
 
-    // Inserindo elementos nas listas duplamente encadeadas
+    // Inserindo elementos na lista duplamente encadeada
     for (int i = 0; i < iListSize; ++i)
     {
         int randomValue = 1 + rand() % 100; // Gera um número aleatório entre 1 e 100
         insertEnd(&headList4, randomValue);
     }
     
-    auto timeStart7 = high_resolution_clock::now();  //calcula o tempo antes de ordenar
+    // Medindo o tempo antes e depois de ordenar a lista
+    auto timeStart7 = high_resolution_clock::now();  
     countingSort(headList4, iListSize);
-    auto timeStop7 = high_resolution_clock::now();  //calcula o tempo depois de ordenar
+    auto timeStop7 = high_resolution_clock::now();  
     
     auto timeDuration7 = duration_cast<nanoseconds>(timeStop7 - timeStart7);
     llTotalCountingSortTime += timeDuration7.count();
