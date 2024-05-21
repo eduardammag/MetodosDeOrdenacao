@@ -2,7 +2,8 @@
 
 #include <fstream>
 
-using std::ostream;
+// Usando o namespace std para simplificar a utilização de ostream
+using namespace std;
 
 // Definição de estrutura para os nós da lista duplamente encadeada
 typedef struct Node
@@ -12,7 +13,7 @@ typedef struct Node
     Node* ptrPrev;  // Ponteiro para o nó anterior na lista
 } Node;
 
-//Protótipos das funções
+// Protótipos das funções
 Node* createNode(int);
 void displayList(Node*, ostream&);
 void insertEnd(Node**, int);
