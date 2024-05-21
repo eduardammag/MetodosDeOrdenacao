@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-
+using namespace std;
 using std::ostream;
 
 // Definição de estrutura para os nós da lista duplamente encadeada
