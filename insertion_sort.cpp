@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib> //por vezes é necessário para o uso do malloc
 #include <chrono> //para avaliar o desempenho do algoritmo
 #include <ctime> //para gerar números aleatórios
@@ -7,6 +8,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::ostream;
+using std::ofstream;
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
@@ -22,7 +25,7 @@ typedef struct Node
 
 //Protótipos das funções
 Node* createNode(int);
-void displayList(Node*);
+void displayList(Node*, ostream&);
 void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void deleteList(Node**);
@@ -32,6 +35,13 @@ void optimizedInsertionSort(Node*);
 
 int main()
 {
+    ofstream outFile("execution_times.txt");
+
+    if (!outFile) {
+        cout << "Erro ao abrir o arquivo." << endl;
+        return 1;
+    }
+    
     Node* headGrades = nullptr;
 
     //Inserindo elementos na lista de notas (coloquei a lista já ordenada para testar se bagunça ou imprime ela como está)
@@ -41,17 +51,19 @@ int main()
     insertEnd(&headGrades, 3);
     insertEnd(&headGrades, 4); 
 
-    cout << "Lista de notas original: "; 
-    displayList(headGrades);  
+    outFile << "Lista de notas original: "; 
+    displayList(headGrades, outFile);
+    outFile << endl;
 
     insertionSort(headGrades);
 
-    cout << "Lista de notas ordenada (Insertion Sort): "; 
-    displayList(headGrades);
+    outFile << "Lista de notas ordenada (Insertion Sort): "; 
+    displayList(headGrades, outFile);
+    outFile << endl;
 
     deleteList(&headGrades);
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -64,17 +76,19 @@ int main()
     insertEnd(&headRandomNumbers, 3);
     insertEnd(&headRandomNumbers, 17);
 
-    cout << "Lista de números aleatórios original: "; 
-    displayList(headRandomNumbers);  
+    outFile << "Lista de números aleatórios original: "; 
+    displayList(headRandomNumbers, outFile);
+    outFile << endl; 
 
     insertionSort(headRandomNumbers);
 
-    cout << "Lista de números aleatórios ordenada (Insertion Sort): "; 
-    displayList(headRandomNumbers);
+    outFile << "Lista de números aleatórios ordenada (Insertion Sort): "; 
+    displayList(headRandomNumbers, outFile);
+    outFile << endl;
 
     deleteList(&headRandomNumbers);
 
-    cout << "============================" << endl;
+    outFile << "============================" << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -103,7 +117,7 @@ int main()
     
     auto timeDuration1 = duration_cast<nanoseconds>(timeStop1 - timeStart1);
     llTotalInsertionSortTime += timeDuration1.count();
-    cout << "Tempo utilizado na ordenação da lista 1 (Insertion Sort): " << timeDuration1.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 1 (Insertion Sort): " << timeDuration1.count() << " nanosegundos." << endl;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -113,8 +127,8 @@ int main()
     
     auto timeDuration2 = duration_cast<nanoseconds>(timeStop2 - timeStart2);
     llTotalOptimizedInsertionSortTime += timeDuration2.count();
-    cout << "Tempo utilizado na ordenação da lista 1 (Optimized Insertion Sort): " << timeDuration2.count() << " nanosegundos." << endl;
-    cout << "============================" << endl;
+    outFile << "Tempo utilizado na ordenação da lista 1 (Optimized Insertion Sort): " << timeDuration2.count() << " nanosegundos." << endl;
+    outFile << "============================" << endl;
     
     deleteList(&headList1);
     
@@ -137,7 +151,7 @@ int main()
     
     auto timeDuration3 = duration_cast<nanoseconds>(timeStop3 - timeStart3);
     llTotalInsertionSortTime += timeDuration3.count();
-    cout << "Tempo utilizado na ordenação da lista 2 (Insertion Sort): " << timeDuration3.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 2 (Insertion Sort): " << timeDuration3.count() << " nanosegundos." << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -147,8 +161,8 @@ int main()
     
     auto timeDuration4 = duration_cast<nanoseconds>(timeStop4 - timeStart4);
     llTotalOptimizedInsertionSortTime += timeDuration4.count();
-    cout << "Tempo utilizado na ordenação da lista 2 (Optimized Insertion Sort): " << timeDuration4.count() << " nanosegundos." << endl;
-    cout << "============================" << endl;
+    outFile << "Tempo utilizado na ordenação da lista 2 (Optimized Insertion Sort): " << timeDuration4.count() << " nanosegundos." << endl;
+    outFile << "============================" << endl;
     
     deleteList(&headList2);
 
@@ -172,7 +186,7 @@ int main()
     
     auto timeDuration5 = duration_cast<nanoseconds>(timeStop5 - timeStart5);
     llTotalInsertionSortTime += timeDuration5.count();
-    cout << "Tempo utilizado na ordenação da lista 3 (Insertion Sort): " << timeDuration5.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 3 (Insertion Sort): " << timeDuration5.count() << " nanosegundos." << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -182,8 +196,8 @@ int main()
     
     auto timeDuration6 = duration_cast<nanoseconds>(timeStop6 - timeStart6);
     llTotalOptimizedInsertionSortTime += timeDuration6.count();
-    cout << "Tempo utilizado na ordenação da lista 3 (Optimized Insertion Sort): " << timeDuration6.count() << " nanosegundos." << endl;
-    cout << "============================" << endl;
+    outFile << "Tempo utilizado na ordenação da lista 3 (Optimized Insertion Sort): " << timeDuration6.count() << " nanosegundos." << endl;
+    outFile << "============================" << endl;
     
     deleteList(&headList3);
 
@@ -207,7 +221,7 @@ int main()
     
     auto timeDuration7 = duration_cast<nanoseconds>(timeStop7 - timeStart7);
     llTotalInsertionSortTime += timeDuration7.count();
-    cout << "Tempo utilizado na ordenação da lista 4 (Insertion Sort): " << timeDuration7.count() << " nanosegundos." << endl;
+    outFile << "Tempo utilizado na ordenação da lista 4 (Insertion Sort): " << timeDuration7.count() << " nanosegundos." << endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -217,8 +231,8 @@ int main()
     
     auto timeDuration8 = duration_cast<nanoseconds>(timeStop8 - timeStart8);
     llTotalOptimizedInsertionSortTime += timeDuration8.count();
-    cout << "Tempo utilizado na ordenação da lista 4 (Optimized Insertion Sort): " << timeDuration8.count() << " nanosegundos." << endl;
-    cout << "============================" << endl;
+    outFile << "Tempo utilizado na ordenação da lista 4 (Optimized Insertion Sort): " << timeDuration8.count() << " nanosegundos." << endl;
+    outFile << "============================" << endl;
     
     deleteList(&headList4); 
 
@@ -229,8 +243,8 @@ int main()
     long long llAvgOptimizedInsertionSortTime = llTotalOptimizedInsertionSortTime / iNumLists;
 
     // Exibindo os resultados
-    cout << "Média do tempo utilizado na ordenação com Insertion Sort: " << llAvgInsertionSortTime << " nanosegundos." << endl;
-    cout << "Média do tempo utilizado na ordenação com Optimized Insertion Sort: " << llAvgOptimizedInsertionSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Insertion Sort: " << llAvgInsertionSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Optimized Insertion Sort: " << llAvgOptimizedInsertionSortTime << " nanosegundos." << endl;
 
     return 0;
 }
@@ -247,7 +261,7 @@ Node* createNode(int iPayload)
 }
 
 // Função para exibir os elementos da lista
-void displayList(Node* node)
+void displayList(Node* node, ostream& os)
 {
     if (node == nullptr)
     {
@@ -262,17 +276,14 @@ void displayList(Node* node)
        
     }
     
-    Node* temp = node;
+    Node* currentNode = node;
      
-    cout << "Payload: ";
-    
-    while(temp != nullptr)
+    while (currentNode != nullptr)
     {
-        cout << temp -> iPayload<< " ";
-        temp = temp -> ptrNext;
+        os << currentNode->iPayload << " ";
+        currentNode = currentNode->ptrNext;
     }
-    
-    cout << endl;
+    os << endl;
 }
 
 // Função para inserir um novo nó no final da lista
