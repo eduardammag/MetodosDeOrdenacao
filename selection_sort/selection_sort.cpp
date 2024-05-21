@@ -2,8 +2,7 @@
 #include <iostream>
 #include <cstdlib> //por vezes é necessário para o uso do malloc
 
-using std::cout;
-using std::endl;
+using namespace std;
 
 // Função para criar um novo nó com um inteiro fornecido
 Node* createNode(int iPayload)
