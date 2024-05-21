@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-
+using namespace std;
 using std::ostream;
 using std::ofstream;
 
