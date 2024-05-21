@@ -1,6 +1,7 @@
 #include "bubble_sort.h"
 #include <iostream>
 #include <cstdlib> //por vezes é necessário para o uso do malloc
+#include <chrono>
 
 using namespace std;
 using namespace std::chrono;
