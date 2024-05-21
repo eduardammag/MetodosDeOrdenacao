@@ -1,4 +1,10 @@
-#include "bubbleSort.h"
+#include "counting_sort.h"
+#include <iostream>
+#include <cstdlib> //por vezes é necessário para o uso do malloc
+#include <climits> // para usar INT_MAX e INT_MIN
+
+using std::cout;
+using std::endl;
 
 // Função para criar um novo nó com um inteiro fornecido
 Node* createNode(int iPayload)
@@ -23,8 +29,7 @@ void displayList(Node* node, ostream& os)
     if  (node -> ptrPrev != nullptr)
     {
         cout << "Meio ou Fim da Lista: Não é possível realizar displayList" << endl;
-        return; // Sai da função se o nó não for o primeiro na lista
-       
+        return; // Sai da função se o nó não for o primeiro na lista  
     }
     
     Node* currentNode = node;
@@ -101,54 +106,45 @@ void swapValue(int& iValue_1, int& iValue_2)
     iValue_2 = iTemp;
 }
 
-// Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Bubble Sort
-void bubbleSort(Node* head, int length)
+// Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Counting Sort
+void countingSort(Node* head, int length)
 {
-    Node* currentNode;
-    Node* nextNode = nullptr;
-
-    for (int i = 0; i < length - 1; ++i)
+    // Encontra o maior e o menor valor na lista para determinar o intervalo do counting sort
+    int minVal = INT_MAX;
+    int maxVal = INT_MIN;
+    Node* currentNode = head;
+    while (currentNode != nullptr)
     {
-        currentNode = head;
-
-        while (currentNode->ptrNext != nextNode)
-        {
-            if (currentNode->iPayload > currentNode->ptrNext->iPayload)
-                swapValue(currentNode->iPayload, currentNode->ptrNext->iPayload);
-                
-            currentNode = currentNode->ptrNext;
-        }
-
-        nextNode = currentNode;
+        if (currentNode->iPayload < minVal)
+            minVal = currentNode->iPayload;
+        if (currentNode->iPayload > maxVal)
+            maxVal = currentNode->iPayload;
+        currentNode = currentNode->ptrNext;
     }
-}
 
-// Função para ordenar uma lista duplamente encadeada usando o método Bubble Sort de forma otimizada
-void optimizedBubbleSort(Node* head, int length)
-{
-    bool bUnordered = 0;
-    Node* currentNode;
-    Node* nextNode = nullptr;
+    // Determina o tamanho do array auxiliar para o counting sort
+    int range = maxVal - minVal + 1;
+    int* count = new int[range]{0}; // Inicializa todos os elementos do array com 0
 
-    for (int i = 0; i < length - 1; ++i)
+    // Conta a ocorrência de cada elemento na lista
+    currentNode = head;
+    while (currentNode != nullptr)
     {
-        bUnordered = 0;
-        currentNode = head;
-
-        while (currentNode->ptrNext != nextNode)
-        {
-            if (currentNode->iPayload > currentNode->ptrNext->iPayload)
-            {
-                swapValue(currentNode->iPayload, currentNode->ptrNext->iPayload);
-                bUnordered = 1;
-            }
-
-            currentNode = currentNode->ptrNext;
-        }
-
-        if (!bUnordered)
-            break;
-
-        nextNode = currentNode;
+        ++count[currentNode->iPayload - minVal];
+        currentNode = currentNode->ptrNext;
     }
+
+    // Atualiza a lista com os elementos ordenados usando o array count
+    currentNode = head;
+    int index = 0;
+    while (currentNode != nullptr)
+    {
+        while (count[index] == 0)
+            ++index;
+        currentNode->iPayload = index + minVal;
+        --count[index];
+        currentNode = currentNode->ptrNext;
+    }
+
+    delete[] count;
 }

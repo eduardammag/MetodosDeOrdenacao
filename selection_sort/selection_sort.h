@@ -1,5 +1,10 @@
 #pragma once
 
+#include <fstream>
+
+using std::ostream;
+using std::ofstream;
+
 // Definição de estrutura para os nós da lista duplamente encadeada
 typedef struct Node
 {
@@ -15,5 +20,5 @@ void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void deleteList(Node**);
 void swapValue(int&, int&);
-void bubbleSort(Node*, int);
-void optimizedBubbleSort(Node*, int);
+void selectionSort(Node*);
+void optimizedSelectionSort(Node*);
