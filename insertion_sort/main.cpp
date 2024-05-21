@@ -5,15 +5,8 @@
 #include <chrono> //para avaliar o desempenho do algoritmo
 #include <ctime> //para gerar números aleatórios
 
-using std::cout;
-using std::endl;
-using std::ostream;
-using std::ofstream;
-
-using std::chrono::high_resolution_clock;
-using std::chrono::duration_cast;
-using std::chrono::nanoseconds;
-
+using namespace std;
+using namespace std::chrono;
 
 int main()
 {
