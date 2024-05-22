@@ -13,13 +13,14 @@ using namespace std::chrono;
 
 int main()
 {
-    ofstream outFile("bubble_times.txt");
+    ofstream outFile("sorting_times.txt");
 
-    if (!outFile) {
+    if (!outFile) 
+    {
         cout << "Erro ao abrir o arquivo." << endl;
         return 1;
     }
-    //testando se a função está ordenando corretamente
+    //testando se as funções estão ordenando corretamente
     Node* headAges = nullptr;
 
     //Inserindo elementos na lista de idades (ordenei a lista com o pior caso, ou seja, de forma decrescente)
@@ -99,86 +100,84 @@ int main()
 
     outFile << "============================" << endl;
 
-    const int numLists = 1000;
-    const int listSize = 10000;
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    const int iNumLists = 1000;
+    const int iListSize = 10000;
+
+    // Definindo variáveis para o tempo total de execução de cada algoritmo
+    long long llTotalBubbleSortTime = 0;
+    long long llTotalOptimizedBubbleSortTime = 0;
+    long long llTotalCountingSortTime = 0;
+    long long llTotalInsertionSortTime = 0;
+    long long llTotalOptimizedInsertionSortTime = 0;
+    long long llTotalSelectionSortTime = 0;
+    long long llTotalOptimizedSelectionSortTime = 0;
+
+    // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
 
-    for (int i = 0; i < numLists; ++i) {
-        Node* head = nullptr;
+    for (int listNum = 1; listNum <= iNumLists; ++listNum) 
+    {
+        Node* lists[7] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
 
-        for (int j = 0; j < listSize; ++j) {
+        // Gerando listas idênticas com elementos aleatórios
+        for (int i = 0; i < iListSize; ++i) 
+        {
             int randomValue = 1 + rand() % 100;
-            insertEnd(&head, randomValue);
+            for (int j = 0; j < 7; ++j) 
+            {
+                insertEnd(&lists[j], randomValue);
+            }
         }
 
-        outFile << "Lista " << i + 1 << " gerada." << std::endl;
+        // Função auxiliar para medir e registrar o tempo
+        auto measureAndLogTime = [&](void (*sortFunction)(Node*, int), const string& sortName, long long& totalTime, Node* list) 
+        {
+            auto start = high_resolution_clock::now();
+            sortFunction(list, iListSize);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(stop - start);
+            totalTime += duration.count();
+            outFile << "Lista " << listNum << " (" << sortName << "): " << duration.count() << " nanosegundos." << endl;
+        };
 
-        // Medir o tempo de Bubble Sort
-        Node* headCopy = copyList(head);
-        auto start = std::chrono::high_resolution_clock::now();
-        bubbleSort(headCopy);
-        auto stop = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Bubble Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
+        measureAndLogTime(bubbleSort, "Bubble Sort", llTotalBubbleSortTime, lists[0]);
+        measureAndLogTime(optimizedBubbleSort, "Optimized Bubble Sort", llTotalOptimizedBubbleSortTime, lists[1]);
+        measureAndLogTime(countingSort, "Counting Sort", llTotalCountingSortTime, lists[2]);
+        measureAndLogTime(insertionSort, "Insertion Sort", llTotalInsertionSortTime, lists[3]);
+        measureAndLogTime(optimizedInsertionSort, "Optimized Insertion Sort", llTotalOptimizedInsertionSortTime, lists[4]);
+        measureAndLogTime(selectionSort, "Selection Sort", llTotalSelectionSortTime, lists[5]);
+        measureAndLogTime(optimizedSelectionSort, "Optimized Selection Sort", llTotalOptimizedSelectionSortTime, lists[6]);
 
-        // Medir o tempo de Optimized Bubble Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        optimizedBubbleSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Optimized Bubble Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
+        // Deletando listas
+        for (int j = 0; j < 7; ++j) 
+        {
+            deleteList(&lists[j]);
+        }
 
-        // Medir o tempo de Counting Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        countingSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Counting Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
-
-        // Medir o tempo de Insertion Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        insertionSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Insertion Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
-
-        // Medir o tempo de Optimized Insertion Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        optimizedInsertionSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Optimized Insertion Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
-
-        // Medir o tempo de Selection Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        selectionSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Selection Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
-
-        // Medir o tempo de Optimized Selection Sort
-        headCopy = copyList(head);
-        start = std::chrono::high_resolution_clock::now();
-        optimizedSelectionSort(headCopy);
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-        outFile << "Tempo utilizado na ordenação da lista " << i + 1 << " (Optimized Selection Sort): " << duration.count() << " nanosegundos." << std::endl;
-        deleteList(&headCopy);
-
-        outFile << "============================" << std::endl;
-
-        deleteList(&head);
+        outFile << "============================" << endl;
     }
+
+    // Calculando a média dos tempos
+    long long llAvgBubbleSortTime = llTotalBubbleSortTime / iNumLists;
+    long long llAvgOptimizedBubbleSortTime = llTotalOptimizedBubbleSortTime / iNumLists;
+    long long llAvgCountingSortTime = llTotalCountingSortTime / iNumLists;
+    long long llAvgInsertionSortTime = llTotalInsertionSortTime / iNumLists;
+    long long llAvgOptimizedInsertionSortTime = llTotalOptimizedInsertionSortTime / iNumLists;
+    long long llAvgSelectionSortTime = llTotalSelectionSortTime / iNumLists;
+    long long llAvgOptimizedSelectionSortTime = llTotalOptimizedSelectionSortTime / iNumLists;
+
+    // Exibindo os resultados
+    outFile << "Média do tempo utilizado na ordenação com Bubble Sort: " << llAvgBubbleSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Optimized Bubble Sort: " << llAvgOptimizedBubbleSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Counting Sort: " << llAvgCountingSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Insertion Sort: " << llAvgInsertionSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Optimized Insertion Sort: " << llAvgOptimizedInsertionSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Selection Sort: " << llAvgSelectionSortTime << " nanosegundos." << endl;
+    outFile << "Média do tempo utilizado na ordenação com Optimized Selection Sort: " << llAvgOptimizedSelectionSortTime << " nanosegundos." << endl;
+
+    outFile.close();
+
+    return 0;
 }
