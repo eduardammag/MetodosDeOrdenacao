@@ -7,17 +7,15 @@ using namespace std;
 // Definição de estrutura para os nós da lista duplamente encadeada
 typedef struct Node
 {
-    int iPayload;   // Dados armazenados no nó
-    Node* ptrNext;  // Ponteiro para o próximo nó na lista
-    Node* ptrPrev;  // Ponteiro para o nó anterior na lista
+    int iPayload;
+    Node* ptrNext;  
+    Node* ptrPrev;
 } Node;
 
-// Protótipos das funções
+// Protótipos das funções "base" de listas duplamente encadeadas
 Node* createNode(int);
 void displayList(Node*, ostream&);
 void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void deleteList(Node**);
 void swapValue(int&, int&);
-void bubbleSort(Node*, int);
-void optimizedBubbleSort(Node*, int);
