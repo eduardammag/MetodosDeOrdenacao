@@ -6,10 +6,17 @@
 using namespace std;
 
 // Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Bubble Sort
-void bubbleSort(Node* head, int length)
+void bubbleSort(Node* head)
 {
+    int length = 0;
     Node* currentNode;
     Node* nextNode = nullptr;
+
+    // Calculando o comprimento da lista
+    for (currentNode = head; currentNode != nullptr; currentNode = currentNode->ptrNext)
+    {
+        length++;
+    }
 
     for (int i = 0; i < length - 1; ++i)
     {
@@ -28,15 +35,23 @@ void bubbleSort(Node* head, int length)
 }
 
 // Função para ordenar uma lista duplamente encadeada usando o método Bubble Sort de forma otimizada
-void optimizedBubbleSort(Node* head, int length)
+void optimizedBubbleSort(Node* head)
 {
-    bool bUnordered = 0;
     Node* currentNode;
     Node* nextNode = nullptr;
+    int length = 0;
+
+    // Calculando o comprimento da lista
+    for (currentNode = head; currentNode != nullptr; currentNode = currentNode->ptrNext)
+    {
+        length++;
+    }
+
+    bool bUnordered = false;
 
     for (int i = 0; i < length - 1; ++i)
     {
-        bUnordered = 0;
+        bUnordered = false;
         currentNode = head;
 
         while (currentNode->ptrNext != nextNode)
@@ -44,7 +59,7 @@ void optimizedBubbleSort(Node* head, int length)
             if (currentNode->iPayload > currentNode->ptrNext->iPayload)
             {
                 swapValue(currentNode->iPayload, currentNode->ptrNext->iPayload);
-                bUnordered = 1;
+                bUnordered = true;
             }
 
             currentNode = currentNode->ptrNext;
@@ -56,3 +71,4 @@ void optimizedBubbleSort(Node* head, int length)
         nextNode = currentNode;
     }
 }
+
