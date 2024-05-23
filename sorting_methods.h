@@ -2,16 +2,26 @@
 
 #include "functions_list/functions_list.h"
 
-void bubbleSort(Node*);
-void optimizedBubbleSort(Node*);
+template<typename T>
+void bubbleSort(Node<T>*);
 
-void countingSort(Node*);
+template<typename T>
+void optimizedBubbleSort(Node<T>*);
 
-void insertionSort(Node*);
-void optimizedInsertionSort(Node*);
+template<typename T>
+void countingSort(Node<T>*);
 
-void selectionSort(Node*);
-void optimizedSelectionSort(Node*);
+template<typename T>
+void insertionSort(Node<T>*);
+
+template<typename T>
+void optimizedInsertionSort(Node<T>*);
+
+template<typename T>
+void selectionSort(Node<T>*);
+
+template<typename T>
+void optimizedSelectionSort(Node<T>*);
 
 
 
