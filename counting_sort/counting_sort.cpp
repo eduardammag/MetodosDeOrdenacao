@@ -23,27 +23,26 @@ void countingSort(Node* head) {
         currentNode = currentNode->ptrNext;
     }
 
-    // Determina o tamanho do array auxiliar para o counting sort
-    int range = maxVal - minVal + 1;
-    int* count = new int[range]{0}; // Inicializa todos os elementos do array com 0
+    // Criando um array para armazenar a contagem de cada elemento
+    int* countArray = new int[maxVal - minVal + 1]{0};
 
-    // Conta a ocorrência de cada elemento na lista
+    // Contando a ocorrência de cada elemento na lista
     currentNode = head;
     while (currentNode != nullptr) {
-        ++count[currentNode->iPayload - minVal];
+        countArray[currentNode->iPayload - minVal]++;
         currentNode = currentNode->ptrNext;
     }
 
-    // Atualiza a lista com os elementos ordenados usando o array count
+    // Reconstruindo a lista com os elementos ordenados
     currentNode = head;
     int index = 0;
-    while (currentNode != nullptr) {
-        while (count[index] == 0)
-            ++index;
-        currentNode->iPayload = index + minVal;
-        --count[index];
-        currentNode = currentNode->ptrNext;
+    for (int i = minVal; i <= maxVal; i++) {
+        while (countArray[i - minVal] > 0) {
+            currentNode->iPayload = i;
+            countArray[i - minVal]--;
+            currentNode = currentNode->ptrNext;
+        }
     }
 
-    delete[] count;
+    delete[] countArray;
 }
