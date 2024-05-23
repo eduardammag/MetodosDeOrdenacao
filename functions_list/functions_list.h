@@ -5,17 +5,29 @@
 using namespace std;
 
 // Definição de estrutura para os nós da lista duplamente encadeada
-typedef struct Node
+template<typename T>
+struct Node
 {
-    int iPayload;
-    Node* ptrNext;  
-    Node* ptrPrev;
-} Node;
+    T iPayload;
+    Node<T>* ptrNext;  
+    Node<T>* ptrPrev;
+};
 
 // Protótipos das funções "base" de listas duplamente encadeadas
-Node* createNode(int);
-void displayList(Node*, ostream&);
-void insertEnd(Node**, int);
-void deleteNode(Node**, Node*);
-void deleteList(Node**);
-void swapValue(int&, int&);
+template<typename T>
+Node<T>* createNode(T);
+
+template<typename T>
+void displayList(Node<T>*, ostream&);
+
+template<typename T>
+void insertEnd(Node<T>**, T);
+
+template<typename T>
+void deleteNode(Node<T>**, Node<T>*);
+
+template<typename T>
+void deleteList(Node<T>**);
+
+template<typename T>
+void swapValue(T&, T&);
