@@ -6,12 +6,12 @@
 
 using namespace std;
 
-// Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Counting Sort
-void countingSort(Node* head) {
-    int minVal = INT_MAX;
-    int maxVal = INT_MIN;
+template<typename T>
+void countingSort(Node<T>* head) {
+    T minVal = numeric_limits<T>::max();
+    T maxVal = numeric_limits<T>::min();
     int length = 0;
-    Node* currentNode = head;
+    Node<T>* currentNode = head;
 
     // Encontrando o maior e o menor valor na lista e calculando o comprimento da lista
     while (currentNode != nullptr) {
@@ -35,8 +35,8 @@ void countingSort(Node* head) {
 
     // Reconstruindo a lista com os elementos ordenados
     currentNode = head;
-    int index = 0;
-    for (int i = minVal; i <= maxVal; i++) {
+    T index = 0;
+    for (T i = minVal; i <= maxVal; i++) {
         while (countArray[i - minVal] > 0) {
             currentNode->iPayload = i;
             countArray[i - minVal]--;
