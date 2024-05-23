@@ -5,12 +5,12 @@
 
 using namespace std;
 
-// Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Bubble Sort
-void bubbleSort(Node* head)
+template<typename T>
+void bubbleSort(Node<T>* head)
 {
     int length = 0;
-    Node* currentNode;
-    Node* nextNode = nullptr;
+    Node<T>* currentNode;
+    Node<T>* nextNode = nullptr;
 
     // Calculando o comprimento da lista
     for (currentNode = head; currentNode != nullptr; currentNode = currentNode->ptrNext)
@@ -34,11 +34,11 @@ void bubbleSort(Node* head)
     }
 }
 
-// Função para ordenar uma lista duplamente encadeada usando o método Bubble Sort de forma otimizada
-void optimizedBubbleSort(Node* head)
+template<typename T>
+void optimizedBubbleSort(Node<T>* head)
 {
-    Node* currentNode;
-    Node* nextNode = nullptr;
+    Node<T>* currentNode;
+    Node<T>* nextNode = nullptr;
     int length = 0;
 
     // Calculando o comprimento da lista
@@ -71,4 +71,5 @@ void optimizedBubbleSort(Node* head)
         nextNode = currentNode;
     }
 }
+
 
