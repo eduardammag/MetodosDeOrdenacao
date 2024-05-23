@@ -2,10 +2,10 @@
 
 #include "functions_list/functions_list.h"
 
-void bubbleSort(Node*, int);
-void optimizedBubbleSort(Node*, int);
+void bubbleSort(Node*);
+void optimizedBubbleSort(Node*);
 
-void countingSort(Node*, int);
+void countingSort(Node*);
 
 void insertionSort(Node*);
 void optimizedInsertionSort(Node*);
