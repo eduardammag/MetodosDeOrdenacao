@@ -5,22 +5,22 @@
 
 using namespace std;
 
-// Função para ordenar uma lista duplamente encadeada usando o método Insertion Sort
-void insertionSort(Node* head)
+template<typename T>
+void insertionSort(Node<T>* head)
 {
     // Verifica se a lista está vazia ou tem apenas um elemento
     if (head == nullptr || head->ptrNext == nullptr)
         return;
 
     // Inicializa uma lista "ordenada" vazia e um ponteiro para o nó atual
-    Node* sorted = nullptr;
-    Node* current = head;
+    Node<T>* sorted = nullptr;
+    Node<T>* current = head;
 
     // Percorre a lista original
     while (current != nullptr) 
     {
         // Salva o próximo nó para avançar na lista original
-        Node* next = current->ptrNext;
+        Node<T>* next = current->ptrNext;
 
         // Se a lista "ordenada" estiver vazia ou o elemento atual for menor que o primeiro elemento da lista "ordenada"
         if (sorted == nullptr || sorted->iPayload >= current->iPayload) 
@@ -37,7 +37,7 @@ void insertionSort(Node* head)
         else 
         {
             // Procura a posição correta na lista "ordenada" para inserir o elemento atual
-            Node* search = sorted;
+            Node<T>* search = sorted;
             while (search->ptrNext != nullptr && search->ptrNext->iPayload < current->iPayload) 
             {
                 search = search->ptrNext;
@@ -63,24 +63,24 @@ void insertionSort(Node* head)
     head = sorted;
 }
 
-// Função para ordenar uma lista duplamente encadeada usando o método Insertion Sort de forma otimizada
-void optimizedInsertionSort(Node* head) 
+template<typename T>
+void optimizedInsertionSort(Node<T>* head) 
 {
     // Verifica se a lista está vazia ou tem apenas um elemento
     if (head == nullptr || head->ptrNext == nullptr)
         return;
 
     // Inicializa o ponteiro para o próximo nó após a cabeça da lista
-    Node* current = head->ptrNext;
+    Node<T>* current = head->ptrNext;
 
     // Percorre a lista a partir do segundo elemento
     while (current != nullptr) 
     {
         // Salva o valor do elemento atual
-        int key = current->iPayload;
+        T key = current->iPayload;
 
         // Inicializa o ponteiro para o nó anterior ao elemento atual
-        Node* prev = current->ptrPrev;
+        Node<T>* prev = current->ptrPrev;
 
         // Move os elementos maiores que o valor atual para a direita
         while (prev != nullptr && prev->iPayload > key) 
