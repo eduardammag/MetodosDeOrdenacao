@@ -5,13 +5,13 @@
 
 using namespace std;
 
-// Função para ordenar uma lista duplamente encadeada usando o método Selection Sort
-void selectionSort(Node* head) 
+template<typename T>
+void selectionSort(Node<T>* head) 
 {
-    Node* current = head;
+    Node<T>* current = head;
     while (current != nullptr) 
     {
-        Node* innerCurrent = current->ptrNext;
+        Node<T>* innerCurrent = current->ptrNext;
         while (innerCurrent != nullptr) 
         {
             if (current->iPayload > innerCurrent->iPayload) 
@@ -24,15 +24,15 @@ void selectionSort(Node* head)
     }
 }
 
-// Função para ordenar uma lista duplamente encadeada usando o método Selection Sort de forma otimizada
-void optimizedSelectionSort(Node* head) 
+template<typename T>
+void optimizedSelectionSort(Node<T>* head) 
 {
-    Node* current = head;
+    Node<T>* current = head;
 
     while (current != nullptr) 
     {
-        Node* minNode = current;
-        Node* innerCurrent = current->ptrNext;
+        Node<T>* minNode = current;
+        Node<T>* innerCurrent = current->ptrNext;
 
         while (innerCurrent != nullptr) 
         {
@@ -49,3 +49,4 @@ void optimizedSelectionSort(Node* head)
         current = current->ptrNext;
     }
 }
+
