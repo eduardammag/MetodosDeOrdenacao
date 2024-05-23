@@ -7,12 +7,15 @@
 using namespace std;
 
 // Função para ordenar os valores de uma lista duplamente encadeada em ordem crescente usando o método Counting Sort
-void countingSort(Node* head, int length) {
-    // Encontra o maior e o menor valor na lista para determinar o intervalo do counting sort
+void countingSort(Node* head) {
     int minVal = INT_MAX;
     int maxVal = INT_MIN;
+    int length = 0;
     Node* currentNode = head;
+
+    // Encontrando o maior e o menor valor na lista e calculando o comprimento da lista
     while (currentNode != nullptr) {
+        length++;
         if (currentNode->iPayload < minVal)
             minVal = currentNode->iPayload;
         if (currentNode->iPayload > maxVal)
