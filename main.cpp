@@ -20,10 +20,9 @@ int main()
         cout << "Erro ao abrir o arquivo." << endl;
         return 1;
     }
-    //testando se as funções estão ordenando corretamente
-    Node* headAges = nullptr;
 
-    //Inserindo elementos na lista de idades (ordenei a lista com o pior caso, ou seja, de forma decrescente)
+    // Lista de idades
+    Node* headAges = nullptr;
     insertEnd(&headAges, 100);
     insertEnd(&headAges, 97);
     insertEnd(&headAges, 89);
@@ -31,81 +30,88 @@ int main()
     insertEnd(&headAges, 32);
     insertEnd(&headAges, 0);
 
-    int iAgesSize = 6;
-
     outFile << "Lista de idades original: "; 
     displayList(headAges, outFile);
-    outFile << endl; 
+    outFile << endl;
 
-    bubbleSort(headAges, iAgesSize);
+    bubbleSort(headAges);
 
-    outFile << "Lista de idades ordenada (Bubble Sort): "; 
+    outFile << "Lista de idades ordenada (Bubble Sort): ";
     displayList(headAges, outFile);
     outFile << endl;
 
     deleteList(&headAges);
-
     outFile << "============================" << endl;
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    // Lista de notas
     Node* headGrades = nullptr;
-
-    //Inserindo elementos na lista de notas (coloquei a lista já ordenada para testar se bagunça ou imprime ela como está)
     insertEnd(&headGrades, -1);
     insertEnd(&headGrades, 0);
     insertEnd(&headGrades, 2);
     insertEnd(&headGrades, 3);
     insertEnd(&headGrades, 4); 
 
-    int iGradesSize = 5;
-
     outFile << "Lista de notas original: "; 
     displayList(headGrades, outFile);
     outFile << endl;
 
-    bubbleSort(headGrades, iGradesSize);
+    selectionSort(headGrades);
 
-    outFile << "Lista de notas ordenada (Bubble Sort): "; 
+    outFile << "Lista de notas ordenada (Selection Sort): "; 
     displayList(headGrades, outFile);
     outFile << endl;
 
     deleteList(&headGrades);
-
     outFile << "============================" << endl;
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    // Lista de números aleatórios
     Node* headRandomNumbers = nullptr;
-
     insertEnd(&headRandomNumbers, -15);
     insertEnd(&headRandomNumbers, 27);
     insertEnd(&headRandomNumbers, 86);
     insertEnd(&headRandomNumbers, 3);
     insertEnd(&headRandomNumbers, 17); 
 
-    int iRandomNumbersSize = 5;
-
     outFile << "Lista de números aleatórios original: "; 
     displayList(headRandomNumbers, outFile);
-    outFile << endl; 
+    outFile << endl;
 
-    bubbleSort(headRandomNumbers, iRandomNumbersSize);
+    insertionSort(headRandomNumbers);
 
-    outFile << "Lista de números aleatórios ordenada (Bubble Sort): "; 
+    outFile << "Lista de números aleatórios ordenada (Insertion Sort): "; 
     displayList(headRandomNumbers, outFile);
     outFile << endl;
 
     deleteList(&headRandomNumbers);
-
     outFile << "============================" << endl;
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Lista de idades
+    Node* headAges2 = nullptr;
+    insertEnd(&headAges2, 100);
+    insertEnd(&headAges2, 89);
+    insertEnd(&headAges2, 75);
+    insertEnd(&headAges2, 43);
+    insertEnd(&headAges2, 38);
+    insertEnd(&headAges2, 0);
 
-    const int iNumLists = 1000;
+    outFile << "Lista de idades original: "; 
+    displayList(headAges2, outFile);
+    outFile << endl;
+
+    countingSort(headAges2);
+
+    outFile << "Lista de idades ordenada (Couting Sort): ";
+    displayList(headAges2, outFile);
+    outFile << endl;
+
+    deleteList(&headAges2);
+    outFile << "============================" << endl;
+    
+    ///////////////////////////////////////////////////////////////////////////////////
+
+const int iNumLists = 1000;
     const int iListSize = 10000;
 
-    // Definindo variáveis para o tempo total de execução de cada algoritmo
     long long llTotalBubbleSortTime = 0;
     long long llTotalOptimizedBubbleSortTime = 0;
     long long llTotalCountingSortTime = 0;
@@ -114,43 +120,40 @@ int main()
     long long llTotalSelectionSortTime = 0;
     long long llTotalOptimizedSelectionSortTime = 0;
 
-    // Inicializa o gerador de números aleatórios com o tempo atual
     srand(time(nullptr));
+
+    auto measureAndLogTime = [&](void (*sortFunction)(Node*), const string& sortName, long long& totalTime, Node* list, int listNum) 
+    {
+        auto start = high_resolution_clock::now();
+        sortFunction(list);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<nanoseconds>(stop - start);
+        totalTime += duration.count();
+        outFile << "Lista " << listNum << " (" << sortName << "): " << duration.count() << " nanosegundos." << endl;
+    };
 
     for (int listNum = 1; listNum <= iNumLists; ++listNum) 
     {
         Node* lists[7] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
 
-        // Gerando listas idênticas com elementos aleatórios
         for (int i = 0; i < iListSize; ++i) 
         {
             int randomValue = 1 + rand() % 100;
+
             for (int j = 0; j < 7; ++j) 
             {
                 insertEnd(&lists[j], randomValue);
             }
         }
 
-        // Função auxiliar para medir e registrar o tempo
-        auto measureAndLogTime = [&](void (*sortFunction)(Node*, int), const string& sortName, long long& totalTime, Node* list) 
-        {
-            auto start = high_resolution_clock::now();
-            sortFunction(list, iListSize);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(stop - start);
-            totalTime += duration.count();
-            outFile << "Lista " << listNum << " (" << sortName << "): " << duration.count() << " nanosegundos." << endl;
-        };
+        measureAndLogTime(bubbleSort, "Bubble Sort", llTotalBubbleSortTime, lists[0], listNum);
+        measureAndLogTime(optimizedBubbleSort, "Optimized Bubble Sort", llTotalOptimizedBubbleSortTime, lists[1], listNum);
+        measureAndLogTime(countingSort, "Counting Sort", llTotalCountingSortTime, lists[2], listNum);
+        measureAndLogTime(insertionSort, "Insertion Sort", llTotalInsertionSortTime, lists[3], listNum);
+        measureAndLogTime(optimizedInsertionSort, "Optimized Insertion Sort", llTotalOptimizedInsertionSortTime, lists[4], listNum);
+        measureAndLogTime(selectionSort, "Selection Sort", llTotalSelectionSortTime, lists[5], listNum);
+        measureAndLogTime(optimizedSelectionSort, "Optimized Selection Sort", llTotalOptimizedSelectionSortTime, lists[6], listNum);
 
-        measureAndLogTime(bubbleSort, "Bubble Sort", llTotalBubbleSortTime, lists[0]);
-        measureAndLogTime(optimizedBubbleSort, "Optimized Bubble Sort", llTotalOptimizedBubbleSortTime, lists[1]);
-        measureAndLogTime(countingSort, "Counting Sort", llTotalCountingSortTime, lists[2]);
-        measureAndLogTime(insertionSort, "Insertion Sort", llTotalInsertionSortTime, lists[3]);
-        measureAndLogTime(optimizedInsertionSort, "Optimized Insertion Sort", llTotalOptimizedInsertionSortTime, lists[4]);
-        measureAndLogTime(selectionSort, "Selection Sort", llTotalSelectionSortTime, lists[5]);
-        measureAndLogTime(optimizedSelectionSort, "Optimized Selection Sort", llTotalOptimizedSelectionSortTime, lists[6]);
-
-        // Deletando listas
         for (int j = 0; j < 7; ++j) 
         {
             deleteList(&lists[j]);
@@ -159,7 +162,6 @@ int main()
         outFile << "============================" << endl;
     }
 
-    // Calculando a média dos tempos
     long long llAvgBubbleSortTime = llTotalBubbleSortTime / iNumLists;
     long long llAvgOptimizedBubbleSortTime = llTotalOptimizedBubbleSortTime / iNumLists;
     long long llAvgCountingSortTime = llTotalCountingSortTime / iNumLists;
@@ -168,7 +170,6 @@ int main()
     long long llAvgSelectionSortTime = llTotalSelectionSortTime / iNumLists;
     long long llAvgOptimizedSelectionSortTime = llTotalOptimizedSelectionSortTime / iNumLists;
 
-    // Exibindo os resultados
     outFile << "Média do tempo utilizado na ordenação com Bubble Sort: " << llAvgBubbleSortTime << " nanosegundos." << endl;
     outFile << "Média do tempo utilizado na ordenação com Optimized Bubble Sort: " << llAvgOptimizedBubbleSortTime << " nanosegundos." << endl;
     outFile << "Média do tempo utilizado na ordenação com Counting Sort: " << llAvgCountingSortTime << " nanosegundos." << endl;
