@@ -1,37 +1,25 @@
 #pragma once
-
 using namespace std;
 
-// Definição da estrutura de nó como um template
-template <typename T>
-struct Node
+template<typename T>
+struct NodeTree
 {
-    T iPayload;
-    Node* ptrLeft;
-    Node* ptrRight;
-    Node* next; // Ponteiro para o próximo nó na fila
+    T payLoad;
+    NodeTree* ptrLeft;
+    NodeTree* ptrRight;
 };
 
-// Declaração das funções como templates
-template <typename T>
-Node<T>* createNode(T);
+template<typename T>
+NodeTree<T>* createNodeTree(T);
 
-template <typename T>
-Node<T>* insertNode(Node<T>*, T);
+template<typename T>
+NodeTree<T>* insertNodeTree(NodeTree<T>*, T);
 
-template <typename T>
-void bfsTraversal(Node<T>*);
+template<typename T>
+void bfsTraversal(NodeTree<T>*);
 
-template <typename T>
-int treeHeight(Node<T>*);
+template<typename T>
+int treeHeight(NodeTree<T>*);
 
-template <typename T>
-bool bfsSearch(Node<T>*, T);
-
-template <typename T>
-void enqueue(Node<T>*&, Node<T>*&, Node<T>*);
-
-template <typename T>
-Node<T>* dequeue(Node<T>*&, Node<T>*&);
-
-#include "functions_tree.tpp"
+// Inclui a implementação das funções template
+#include "functionsTree.tpp"
