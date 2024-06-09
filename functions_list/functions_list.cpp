@@ -1,37 +1,37 @@
-#include "functions_list.h"
 #include <iostream>
-#include <cstdlib> //por vezes é necessário para o uso do malloc
+#include <cstdlib> // Necessário para o uso de malloc
 
 using namespace std;
 
-// Função para criar um novo nó com um inteiro fornecido
-Node* createNode(int iPayload)
+// Função para criar um novo nó com um valor fornecido
+template <typename T>
+Node<T>* createNode(T iPayload)
 {
-    Node* temp = (Node*) malloc(sizeof(Node));
-    temp -> iPayload = iPayload;
-    temp -> ptrNext = nullptr;
-    temp -> ptrPrev = nullptr;
+    Node<T>* temp = (Node<T>*) malloc(sizeof(Node<T>));
+    temp->iPayload = iPayload;
+    temp->ptrNext = nullptr;
+    temp->ptrPrev = nullptr;
     
     return temp;
 }
 
 // Função para exibir os elementos da lista
-void displayList(Node* node, ostream& os)
+template <typename T>
+void displayList(Node<T>* node, ostream& os = cout)
 {
     if (node == nullptr)
     {
-        cout << "Lista vazia: Não é possível realizar displayList" << endl;
+        os << "Lista vazia: Não é possível realizar displayList" << endl;
         return; // Sai da função se a lista estiver vazia
     }
     
-    if  (node -> ptrPrev != nullptr)
+    if (node->ptrPrev != nullptr)
     {
-        cout << "Meio ou Fim da Lista: Não é possível realizar displayList" << endl;
+        os << "Meio ou Fim da Lista: Não é possível realizar displayList" << endl;
         return; // Sai da função se o nó não for o primeiro na lista
-       
     }
     
-    Node* currentNode = node;
+    Node<T>* currentNode = node;
      
     while (currentNode != nullptr)
     {
@@ -42,17 +42,18 @@ void displayList(Node* node, ostream& os)
 }
 
 // Função para inserir um novo nó no final da lista
-void insertEnd(Node** head, int iPayload)
+template <typename T>
+void insertEnd(Node<T>** head, T iPayload)
 {
-    Node* newNode = createNode(iPayload);  // Cria um novo nó com o inteiro fornecido
+    Node<T>* newNode = createNode(iPayload); // Cria um novo nó com o valor fornecido
     
     if (*head == nullptr)
     {
-        (*head) = newNode;
+        *head = newNode;
         return;
     }
     
-    Node* temp = (*head);
+    Node<T>* temp = *head;
     
     // Percorre a lista até o fim
     while (temp->ptrNext != nullptr) temp = temp->ptrNext;
@@ -62,7 +63,8 @@ void insertEnd(Node** head, int iPayload)
 }
 
 // Função para remover um nó específico da lista
-void deleteNode(Node** head, Node* ptrDelete)
+template <typename T>
+void deleteNode(Node<T>** head, Node<T>* ptrDelete)
 {
     if (*head == nullptr || ptrDelete == nullptr)
     {
@@ -71,7 +73,7 @@ void deleteNode(Node** head, Node* ptrDelete)
     }
     
     // Se o nó a ser removido for o primeiro nó da lista, atualiza a cabeça da lista
-    if (*head == ptrDelete) (*head) = ptrDelete->ptrNext;
+    if (*head == ptrDelete) *head = ptrDelete->ptrNext;
     
     // Se o nó a ser removido não for o último nó da lista, atualiza o ponteiro do nó posterior ao nó a ser removido
     if (ptrDelete->ptrNext != nullptr) ptrDelete->ptrNext->ptrPrev = ptrDelete->ptrPrev;
@@ -79,13 +81,15 @@ void deleteNode(Node** head, Node* ptrDelete)
     // Se o nó a ser removido não for o primeiro nó da lista, atualiza o ponteiro do nó anterior ao nó a ser removido
     if (ptrDelete->ptrPrev != nullptr) ptrDelete->ptrPrev->ptrNext = ptrDelete->ptrNext;
     
-    free(ptrDelete);  // Libera a memória alocada para o nó a ser removido
+    free(ptrDelete); // Libera a memória alocada para o nó a ser removido
 }
 
-void deleteList(Node** head)
+// Função para deletar toda a lista
+template <typename T>
+void deleteList(Node<T>** head)
 {
-    Node* current = *head;
-    Node* next;
+    Node<T>* current = *head;
+    Node<T>* next;
 
     while (current != nullptr)
     {
@@ -97,10 +101,11 @@ void deleteList(Node** head)
     *head = nullptr; // Atualiza a cabeça da lista para nullptr
 }
 
-//função para trocar dois valores
-void swapValue(int& iValue_1, int& iValue_2)
+// Função para trocar dois valores
+template <typename T>
+void swapValue(T& iValue_1, T& iValue_2)
 {
-    int iTemp = iValue_1;
+    T iTemp = iValue_1;
     iValue_1 = iValue_2;
     iValue_2 = iTemp;
 }
