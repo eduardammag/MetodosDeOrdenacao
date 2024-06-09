@@ -84,6 +84,45 @@ void bfsTraversal(NodeTree<T>* startingNode)
 }
 
 template<typename T>
+NodeTree<T>* searchBFS(NodeTree<T>* startingNode, T value)
+{
+    if (startingNode == nullptr) return nullptr;
+
+    Node<NodeTree<T>*>* head = nullptr;
+    Node<NodeTree<T>*>* currentNode = nullptr;
+
+    insertEnd(&head, startingNode);
+
+    currentNode = head;
+
+    while (currentNode != nullptr)
+    {   
+        NodeTree<T>* treeNode = currentNode->payLoad;
+
+        if (treeNode->payLoad == value) {
+            cout << "Este nó foi encontrado e se encontra no endereço: " << treeNode << endl;
+            return treeNode;
+        }
+
+        if (treeNode->ptrLeft != nullptr)
+        {
+            insertEnd(&head, treeNode->ptrLeft);
+        }
+
+        if (treeNode->ptrRight != nullptr)
+        {
+            insertEnd(&head, treeNode->ptrRight);
+        }
+
+        currentNode = currentNode->ptrNext;
+    }
+
+    cout << "Não foi possível achar esse valor na árvore." << endl;
+    return nullptr;
+}
+
+
+template<typename T>
 int treeHeight(NodeTree<T>* startingNode)
 {
     if (startingNode == nullptr) return 0;
