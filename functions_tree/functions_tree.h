@@ -2,25 +2,34 @@
 
 using namespace std;
 
+// Definição da estrutura de nó como um template
 template <typename T>
-typedef struct Node
+struct Node
 {
-    int iPayload;
+    T iPayload;
     Node* ptrLeft;
     Node* ptrRight;
     Node* next; // Ponteiro para o próximo nó na fila
-} Node;
+};
 
-Node* createNode(int);
+// Declaração das funções como templates
+template <typename T>
+Node<T>* createNode(T);
 
-Node* insertNode(Node*, int);
+template <typename T>
+Node<T>* insertNode(Node<T>*, T);
 
-void bfsTraversal(Node*);
+template <typename T>
+void bfsTraversal(Node<T>*);
 
-int treeHeight(Node*);
+template <typename T>
+int treeHeight(Node<T>*);
 
-bool bfsSearch(Node*, int);
+template <typename T>
+bool bfsSearch(Node<T>*, T);
 
-void enqueue(Node*&, Node*&, Node*);
+template <typename T>
+void enqueue(Node<T>*&, Node<T>*&, Node<T>*);
 
-Node* dequeue(Node*&, Node*&);
+template <typename T>
+Node<T>* dequeue(Node<T>*&, Node<T>*&);
