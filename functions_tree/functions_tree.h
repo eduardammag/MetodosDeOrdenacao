@@ -33,3 +33,5 @@ void enqueue(Node<T>*&, Node<T>*&, Node<T>*);
 
 template <typename T>
 Node<T>* dequeue(Node<T>*&, Node<T>*&);
+
+#include "functions_tree.tpp"
