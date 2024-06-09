@@ -1,16 +1,14 @@
 #include <iostream>
 #include <cstdlib> // Necessário para o uso de malloc
-
 #include "functions_list.h"
-
 using namespace std;
 
 // Função para criar um novo nó com um valor fornecido
 template <typename T>
-Node<T>* createNode(T iPayload)
+Node<T>* createNode(T payLoad)
 {
     Node<T>* temp = (Node<T>*) malloc(sizeof(Node<T>));
-    temp->iPayload = iPayload;
+    temp->payLoad = payLoad;
     temp->ptrNext = nullptr;
     temp->ptrPrev = nullptr;
     
@@ -19,7 +17,7 @@ Node<T>* createNode(T iPayload)
 
 // Função para exibir os elementos da lista
 template <typename T>
-void displayList(Node<T>* node, ostream& os = cout)
+void displayList(Node<T>* node, ostream& os)
 {
     if (node == nullptr)
     {
@@ -37,7 +35,7 @@ void displayList(Node<T>* node, ostream& os = cout)
      
     while (currentNode != nullptr)
     {
-        os << currentNode->iPayload << " ";
+        os << currentNode->payLoad << " ";
         currentNode = currentNode->ptrNext;
     }
     os << endl;
@@ -45,9 +43,9 @@ void displayList(Node<T>* node, ostream& os = cout)
 
 // Função para inserir um novo nó no final da lista
 template <typename T>
-void insertEnd(Node<T>** head, T iPayload)
+void insertEnd(Node<T>** head, T payLoad)
 {
-    Node<T>* newNode = createNode(iPayload); // Cria um novo nó com o valor fornecido
+    Node<T>* newNode = createNode(payLoad); // Cria um novo nó com o valor fornecido
     
     if (*head == nullptr)
     {
