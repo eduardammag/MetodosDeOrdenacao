@@ -2,6 +2,7 @@
 
 using namespace std;
 
+template <typename T>
 typedef struct Node
 {
     int iPayload;
