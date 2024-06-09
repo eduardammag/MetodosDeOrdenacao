@@ -1,149 +1,97 @@
-#include "functions_tree.h"
-
 #include <iostream>
 #include <cstdlib>
-
+#include "functionsTree.h"
+#include "functions_list.h"
 using namespace std;
 
-Node* createNode(int iValue)
+template<typename T>
+NodeTree<T>* createNodeTree(T data)
 {
-    Node* tmp = (Node*) malloc(sizeof(Node));
+    NodeTree<T>* temp = (NodeTree<T>*) malloc(sizeof(NodeTree<T>));
     
-    if (tmp == nullptr)
+    if (temp == nullptr)
     {
         cerr << "Erro em createNode: malloc" << endl;
         exit(1);
     }
     
-    tmp->iPayload = iValue;
-    tmp->ptrLeft = nullptr;
-    tmp->ptrRight = nullptr;
-    tmp->next = nullptr; // Inicializa o ponteiro da fila
+    temp->payLoad = data;  // Corrigido de iPayload para payLoad
+    temp->ptrLeft = nullptr;
+    temp->ptrRight = nullptr;
     
-    return tmp;
+    return temp;
 }
 
-Node* insertNode(Node* startingNode, int iData)
+template<typename T>
+NodeTree<T>* insertNodeTree(NodeTree<T>* startingNode, T data)
 {
     if(startingNode == nullptr)
     {
-        return createNode(iData);
+        return createNodeTree(data);
     }
     
-    if(iData < startingNode->iPayload)
+    if(data < startingNode->payLoad)
     {
-        startingNode->ptrLeft = insertNode(startingNode->ptrLeft, iData);
+        startingNode->ptrLeft = insertNodeTree(startingNode->ptrLeft, data);
     }
     else
     {
-        startingNode->ptrRight = insertNode(startingNode->ptrRight, iData);
+        startingNode->ptrRight = insertNodeTree(startingNode->ptrRight, data);
     }
     
     return startingNode;
 }
 
-void enqueue(Node*& front, Node*& rear, Node* treeNode)
-{
-    if (rear == nullptr)
-    {
-        front = rear = treeNode;
-    }
-    else
-    {
-        rear->next = treeNode;
-        rear = treeNode;
-    }
-    treeNode->next = nullptr; // Garantir que o próximo nó seja nulo
-}
-
-Node* dequeue(Node*& front, Node*& rear)
-{
-    if (front == nullptr)
-    {
-        return nullptr;
-    }
-
-    Node* temp = front;
-    front = front->next;
-
-    if (front == nullptr)
-    {
-        rear = nullptr;
-    }
-
-    return temp;
-}
-
-void bfsTraversal(Node* startingNode)
+template<typename T>
+void bfsTraversal(NodeTree<T>* startingNode)
 {
     if (startingNode == nullptr) return;
 
-    Node* queueFront = nullptr;
-    Node* queueRear = nullptr;
+    Node<NodeTree<T>*>* head = nullptr;
+    Node<NodeTree<T>*>* currentNode = nullptr;
 
-    enqueue(queueFront, queueRear, startingNode);
+    insertEnd(&head, startingNode);
 
-    while (queueFront != nullptr)
-    {
-        Node* currentNode = dequeue(queueFront, queueRear);
-        
-        cout << currentNode->iPayload << " "; // Imprime o elemento
+    currentNode = head;
 
-        if (currentNode->ptrLeft != nullptr)
+    bool firstElement = true;
+
+    while (currentNode != nullptr)
+    {   
+        NodeTree<T>* treeNode = currentNode->payLoad;
+
+        if (!firstElement)
         {
-            enqueue(queueFront, queueRear, currentNode->ptrLeft);
+            cout << ", ";
         }
-        
-        if (currentNode->ptrRight != nullptr)
+        cout << treeNode->payLoad;
+        firstElement = false;
+
+        if (treeNode->ptrLeft != nullptr)
         {
-            enqueue(queueFront, queueRear, currentNode->ptrRight);
+            insertEnd(&head, treeNode->ptrLeft);
         }
+
+        if (treeNode->ptrRight != nullptr)
+        {
+            insertEnd(&head, treeNode->ptrRight);
+        }
+
+        currentNode = currentNode->ptrNext;
     }
+
+    cout << endl;
 }
 
-bool bfsSearch(Node* startingNode, int value)
+template<typename T>
+int treeHeight(NodeTree<T>* startingNode)
 {
-    if (startingNode == nullptr) return false;
-
-    Node* queueFront = nullptr;
-    Node* queueRear = nullptr;
-
-    enqueue(queueFront, queueRear, startingNode);
-
-    while (queueFront != nullptr)
-    {
-        Node* currentNode = dequeue(queueFront, queueRear);
-
-        if (currentNode->iPayload == value)
-        {
-            return true;
-        }
-
-        if (currentNode->ptrLeft != nullptr)
-        {
-            enqueue(queueFront, queueRear, currentNode->ptrLeft);
-        }
-        
-        if (currentNode->ptrRight != nullptr)
-        {
-            enqueue(queueFront, queueRear, currentNode->ptrRight);
-        }
-    }
-
-    return false;
-}
-
-int treeHeight(Node* node)
-{
-    if (node == nullptr)
-    {
-        return 0;
-    }
+    if (startingNode == nullptr) return 0;
     else
     {
-        int leftHeight = treeHeight(node->ptrLeft);
-        int rightHeight = treeHeight(node->ptrRight);
+        int leftHeight = treeHeight(startingNode->ptrLeft);
+        int rightHeight = treeHeight(startingNode->ptrRight);
 
-        return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+        return max(leftHeight, rightHeight) + 1;
     }
 }
