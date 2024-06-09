@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib> // Necessário para o uso de malloc
 
+#include "functions_list.h"
+
 using namespace std;
 
 // Função para criar um novo nó com um valor fornecido
