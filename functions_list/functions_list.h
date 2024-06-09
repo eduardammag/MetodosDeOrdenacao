@@ -1,5 +1,4 @@
 #pragma once
-
 #include <fstream>
 #include <ostream>
 using namespace std;
@@ -8,7 +7,7 @@ using namespace std;
 template<typename T>
 struct Node
 {
-    T iPayload;
+    T payLoad;
     Node<T>* ptrNext;  
     Node<T>* ptrPrev;
 };
@@ -25,6 +24,15 @@ void insertEnd(Node<T>**, T);
 
 template<typename T>
 void deleteNode(Node<T>**, Node<T>*);
+
+template<typename T>
+void deleteList(Node<T>**);
+
+template<typename T>
+void swapValue(T&, T&);
+
+// Inclui a implementação das funções template
+#include "functions_list.tpp"
 
 template<typename T>
 void deleteList(Node<T>**);
