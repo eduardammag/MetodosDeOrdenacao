@@ -121,6 +121,29 @@ NodeTree<T>* searchBFS(NodeTree<T>* startingNode, T value)
     return nullptr;
 }
 
+// Função para procurar um valor na árvore pelo DFS sem usar pilha
+template <typename T>
+NodeTree<T>* searchDFS(NodeTree<T>* startingNodeTree, T data)
+{
+    // Se a árvore for vazia, retorna nullptr e imprime a mensagem
+    if (startingNodeTree == nullptr) {
+       return nullptr;
+    }
+
+    // Verifica se o nó atual contém o valor procurado
+    if (startingNodeTree->payLoad == data) {
+        cout << "O nó foi encontrado!" << endl;
+        return startingNodeTree;
+    }
+
+    // Verifica se o valor está na subárvore esquerda
+    NodeTree<T>* leftResult = searchDFS(startingNodeTree->ptrLeft, data);
+    if (leftResult != nullptr) 
+        return leftResult;
+
+    // Se não estiver na subárvore esquerda, verifica na subárvore direita
+    return searchDFS(startingNodeTree->ptrRight, data);
+}
 
 template<typename T>
 int treeHeight(NodeTree<T>* startingNode)
