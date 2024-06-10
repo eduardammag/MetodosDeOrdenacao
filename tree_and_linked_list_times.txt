@@ -1,0 +1,500 @@
+Tempo de criação da árvore 1: 861073 nanoseconds
+Tempo de criação da lista 1: 187292836 nanoseconds
+Tempo de busca com DFS na árvore 1: 15224 nanoseconds
+Tempo de busca com BFS na árvore 1: 75 nanoseconds
+==========================================
+Tempo de criação da árvore 2: 827835 nanoseconds
+Tempo de criação da lista 2: 187005591 nanoseconds
+Tempo de busca com DFS na árvore 2: 18707 nanoseconds
+Tempo de busca com BFS na árvore 2: 96 nanoseconds
+==========================================
+Tempo de criação da árvore 3: 575362 nanoseconds
+Tempo de criação da lista 3: 184605449 nanoseconds
+Tempo de busca com DFS na árvore 3: 16585 nanoseconds
+Tempo de busca com BFS na árvore 3: 77 nanoseconds
+==========================================
+Tempo de criação da árvore 4: 772326 nanoseconds
+Tempo de criação da lista 4: 184551981 nanoseconds
+Tempo de busca com DFS na árvore 4: 18432 nanoseconds
+Tempo de busca com BFS na árvore 4: 89 nanoseconds
+==========================================
+Tempo de criação da árvore 5: 744087 nanoseconds
+Tempo de criação da lista 5: 188568692 nanoseconds
+Tempo de busca com DFS na árvore 5: 19361 nanoseconds
+Tempo de busca com BFS na árvore 5: 119 nanoseconds
+==========================================
+Tempo de criação da árvore 6: 805117 nanoseconds
+Tempo de criação da lista 6: 191791697 nanoseconds
+Tempo de busca com DFS na árvore 6: 17322 nanoseconds
+Tempo de busca com BFS na árvore 6: 78 nanoseconds
+==========================================
+Tempo de criação da árvore 7: 542920 nanoseconds
+Tempo de criação da lista 7: 184931055 nanoseconds
+Tempo de busca com DFS na árvore 7: 24016 nanoseconds
+Tempo de busca com BFS na árvore 7: 102 nanoseconds
+==========================================
+Tempo de criação da árvore 8: 576477 nanoseconds
+Tempo de criação da lista 8: 184601609 nanoseconds
+Tempo de busca com DFS na árvore 8: 25823 nanoseconds
+Tempo de busca com BFS na árvore 8: 69 nanoseconds
+==========================================
+Tempo de criação da árvore 9: 579892 nanoseconds
+Tempo de criação da lista 9: 184329287 nanoseconds
+Tempo de busca com DFS na árvore 9: 20817 nanoseconds
+Tempo de busca com BFS na árvore 9: 65 nanoseconds
+==========================================
+Tempo de criação da árvore 10: 572098 nanoseconds
+Tempo de criação da lista 10: 183551777 nanoseconds
+Tempo de busca com DFS na árvore 10: 18302 nanoseconds
+Tempo de busca com BFS na árvore 10: 66 nanoseconds
+==========================================
+Tempo de criação da árvore 11: 561748 nanoseconds
+Tempo de criação da lista 11: 183630842 nanoseconds
+Tempo de busca com DFS na árvore 11: 18124 nanoseconds
+Tempo de busca com BFS na árvore 11: 65 nanoseconds
+==========================================
+Tempo de criação da árvore 12: 550663 nanoseconds
+Tempo de criação da lista 12: 184418935 nanoseconds
+Tempo de busca com DFS na árvore 12: 18028 nanoseconds
+Tempo de busca com BFS na árvore 12: 65 nanoseconds
+==========================================
+Tempo de criação da árvore 13: 502388 nanoseconds
+Tempo de criação da lista 13: 184183755 nanoseconds
+Tempo de busca com DFS na árvore 13: 19476 nanoseconds
+Tempo de busca com BFS na árvore 13: 82 nanoseconds
+==========================================
+Tempo de criação da árvore 14: 513975 nanoseconds
+Tempo de criação da lista 14: 183535878 nanoseconds
+Tempo de busca com DFS na árvore 14: 16251 nanoseconds
+Tempo de busca com BFS na árvore 14: 51 nanoseconds
+==========================================
+Tempo de criação da árvore 15: 521636 nanoseconds
+Tempo de criação da lista 15: 183840588 nanoseconds
+Tempo de busca com DFS na árvore 15: 15469 nanoseconds
+Tempo de busca com BFS na árvore 15: 61 nanoseconds
+==========================================
+Tempo de criação da árvore 16: 517621 nanoseconds
+Tempo de criação da lista 16: 184130839 nanoseconds
+Tempo de busca com DFS na árvore 16: 17708 nanoseconds
+Tempo de busca com BFS na árvore 16: 62 nanoseconds
+==========================================
+Tempo de criação da árvore 17: 638063 nanoseconds
+Tempo de criação da lista 17: 186228598 nanoseconds
+Tempo de busca com DFS na árvore 17: 16177 nanoseconds
+Tempo de busca com BFS na árvore 17: 89 nanoseconds
+==========================================
+Tempo de criação da árvore 18: 754384 nanoseconds
+Tempo de criação da lista 18: 189675742 nanoseconds
+Tempo de busca com DFS na árvore 18: 20295 nanoseconds
+Tempo de busca com BFS na árvore 18: 114 nanoseconds
+==========================================
+Tempo de criação da árvore 19: 513204 nanoseconds
+Tempo de criação da lista 19: 183944843 nanoseconds
+Tempo de busca com DFS na árvore 19: 17282 nanoseconds
+Tempo de busca com BFS na árvore 19: 95 nanoseconds
+==========================================
+Tempo de criação da árvore 20: 520664 nanoseconds
+Tempo de criação da lista 20: 184075115 nanoseconds
+Tempo de busca com DFS na árvore 20: 19643 nanoseconds
+Tempo de busca com BFS na árvore 20: 117 nanoseconds
+==========================================
+Tempo de criação da árvore 21: 553158 nanoseconds
+Tempo de criação da lista 21: 187609420 nanoseconds
+Tempo de busca com DFS na árvore 21: 19134 nanoseconds
+Tempo de busca com BFS na árvore 21: 97 nanoseconds
+==========================================
+Tempo de criação da árvore 22: 510247 nanoseconds
+Tempo de criação da lista 22: 183400054 nanoseconds
+Tempo de busca com DFS na árvore 22: 15739 nanoseconds
+Tempo de busca com BFS na árvore 22: 65 nanoseconds
+==========================================
+Tempo de criação da árvore 23: 532132 nanoseconds
+Tempo de criação da lista 23: 183448074 nanoseconds
+Tempo de busca com DFS na árvore 23: 16480 nanoseconds
+Tempo de busca com BFS na árvore 23: 69 nanoseconds
+==========================================
+Tempo de criação da árvore 24: 529555 nanoseconds
+Tempo de criação da lista 24: 183533449 nanoseconds
+Tempo de busca com DFS na árvore 24: 15215 nanoseconds
+Tempo de busca com BFS na árvore 24: 71 nanoseconds
+==========================================
+Tempo de criação da árvore 25: 673973 nanoseconds
+Tempo de criação da lista 25: 186246469 nanoseconds
+Tempo de busca com DFS na árvore 25: 25933 nanoseconds
+Tempo de busca com BFS na árvore 25: 100 nanoseconds
+==========================================
+Tempo de criação da árvore 26: 556401 nanoseconds
+Tempo de criação da lista 26: 184437806 nanoseconds
+Tempo de busca com DFS na árvore 26: 19739 nanoseconds
+Tempo de busca com BFS na árvore 26: 75 nanoseconds
+==========================================
+Tempo de criação da árvore 27: 550249 nanoseconds
+Tempo de criação da lista 27: 184160551 nanoseconds
+Tempo de busca com DFS na árvore 27: 25753 nanoseconds
+Tempo de busca com BFS na árvore 27: 105 nanoseconds
+==========================================
+Tempo de criação da árvore 28: 545142 nanoseconds
+Tempo de criação da lista 28: 187561746 nanoseconds
+Tempo de busca com DFS na árvore 28: 22367 nanoseconds
+Tempo de busca com BFS na árvore 28: 103 nanoseconds
+==========================================
+Tempo de criação da árvore 29: 505378 nanoseconds
+Tempo de criação da lista 29: 184505346 nanoseconds
+Tempo de busca com DFS na árvore 29: 19660 nanoseconds
+Tempo de busca com BFS na árvore 29: 87 nanoseconds
+==========================================
+Tempo de criação da árvore 30: 510219 nanoseconds
+Tempo de criação da lista 30: 183863166 nanoseconds
+Tempo de busca com DFS na árvore 30: 14765 nanoseconds
+Tempo de busca com BFS na árvore 30: 71 nanoseconds
+==========================================
+Tempo de criação da árvore 31: 514306 nanoseconds
+Tempo de criação da lista 31: 183405564 nanoseconds
+Tempo de busca com DFS na árvore 31: 16455 nanoseconds
+Tempo de busca com BFS na árvore 31: 58 nanoseconds
+==========================================
+Tempo de criação da árvore 32: 517536 nanoseconds
+Tempo de criação da lista 32: 183374809 nanoseconds
+Tempo de busca com DFS na árvore 32: 15387 nanoseconds
+Tempo de busca com BFS na árvore 32: 86 nanoseconds
+==========================================
+Tempo de criação da árvore 33: 512675 nanoseconds
+Tempo de criação da lista 33: 183498722 nanoseconds
+Tempo de busca com DFS na árvore 33: 15359 nanoseconds
+Tempo de busca com BFS na árvore 33: 61 nanoseconds
+==========================================
+Tempo de criação da árvore 34: 529781 nanoseconds
+Tempo de criação da lista 34: 184353503 nanoseconds
+Tempo de busca com DFS na árvore 34: 20193 nanoseconds
+Tempo de busca com BFS na árvore 34: 96 nanoseconds
+==========================================
+Tempo de criação da árvore 35: 538937 nanoseconds
+Tempo de criação da lista 35: 183640534 nanoseconds
+Tempo de busca com DFS na árvore 35: 16568 nanoseconds
+Tempo de busca com BFS na árvore 35: 91 nanoseconds
+==========================================
+Tempo de criação da árvore 36: 545106 nanoseconds
+Tempo de criação da lista 36: 185983256 nanoseconds
+Tempo de busca com DFS na árvore 36: 17496 nanoseconds
+Tempo de busca com BFS na árvore 36: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 37: 505288 nanoseconds
+Tempo de criação da lista 37: 186725267 nanoseconds
+Tempo de busca com DFS na árvore 37: 20835 nanoseconds
+Tempo de busca com BFS na árvore 37: 69 nanoseconds
+==========================================
+Tempo de criação da árvore 38: 582289 nanoseconds
+Tempo de criação da lista 38: 189759773 nanoseconds
+Tempo de busca com DFS na árvore 38: 18822 nanoseconds
+Tempo de busca com BFS na árvore 38: 54 nanoseconds
+==========================================
+Tempo de criação da árvore 39: 534161 nanoseconds
+Tempo de criação da lista 39: 184472907 nanoseconds
+Tempo de busca com DFS na árvore 39: 17642 nanoseconds
+Tempo de busca com BFS na árvore 39: 77 nanoseconds
+==========================================
+Tempo de criação da árvore 40: 535405 nanoseconds
+Tempo de criação da lista 40: 184869194 nanoseconds
+Tempo de busca com DFS na árvore 40: 19526 nanoseconds
+Tempo de busca com BFS na árvore 40: 92 nanoseconds
+==========================================
+Tempo de criação da árvore 41: 506891 nanoseconds
+Tempo de criação da lista 41: 184316707 nanoseconds
+Tempo de busca com DFS na árvore 41: 21085 nanoseconds
+Tempo de busca com BFS na árvore 41: 75 nanoseconds
+==========================================
+Tempo de criação da árvore 42: 566970 nanoseconds
+Tempo de criação da lista 42: 185699166 nanoseconds
+Tempo de busca com DFS na árvore 42: 19773 nanoseconds
+Tempo de busca com BFS na árvore 42: 77 nanoseconds
+==========================================
+Tempo de criação da árvore 43: 576250 nanoseconds
+Tempo de criação da lista 43: 183523209 nanoseconds
+Tempo de busca com DFS na árvore 43: 18547 nanoseconds
+Tempo de busca com BFS na árvore 43: 72 nanoseconds
+==========================================
+Tempo de criação da árvore 44: 509948 nanoseconds
+Tempo de criação da lista 44: 183979957 nanoseconds
+Tempo de busca com DFS na árvore 44: 19128 nanoseconds
+Tempo de busca com BFS na árvore 44: 110 nanoseconds
+==========================================
+Tempo de criação da árvore 45: 521391 nanoseconds
+Tempo de criação da lista 45: 184170033 nanoseconds
+Tempo de busca com DFS na árvore 45: 17226 nanoseconds
+Tempo de busca com BFS na árvore 45: 91 nanoseconds
+==========================================
+Tempo de criação da árvore 46: 553418 nanoseconds
+Tempo de criação da lista 46: 184103805 nanoseconds
+Tempo de busca com DFS na árvore 46: 18586 nanoseconds
+Tempo de busca com BFS na árvore 46: 109 nanoseconds
+==========================================
+Tempo de criação da árvore 47: 564769 nanoseconds
+Tempo de criação da lista 47: 183491101 nanoseconds
+Tempo de busca com DFS na árvore 47: 15910 nanoseconds
+Tempo de busca com BFS na árvore 47: 58 nanoseconds
+==========================================
+Tempo de criação da árvore 48: 541975 nanoseconds
+Tempo de criação da lista 48: 183464683 nanoseconds
+Tempo de busca com DFS na árvore 48: 14672 nanoseconds
+Tempo de busca com BFS na árvore 48: 76 nanoseconds
+==========================================
+Tempo de criação da árvore 49: 551294 nanoseconds
+Tempo de criação da lista 49: 183582415 nanoseconds
+Tempo de busca com DFS na árvore 49: 15727 nanoseconds
+Tempo de busca com BFS na árvore 49: 67 nanoseconds
+==========================================
+Tempo de criação da árvore 50: 556027 nanoseconds
+Tempo de criação da lista 50: 183340324 nanoseconds
+Tempo de busca com DFS na árvore 50: 15152 nanoseconds
+Tempo de busca com BFS na árvore 50: 89 nanoseconds
+==========================================
+Tempo de criação da árvore 51: 688046 nanoseconds
+Tempo de criação da lista 51: 184354773 nanoseconds
+Tempo de busca com DFS na árvore 51: 19669 nanoseconds
+Tempo de busca com BFS na árvore 51: 75 nanoseconds
+==========================================
+Tempo de criação da árvore 52: 543601 nanoseconds
+Tempo de criação da lista 52: 183622394 nanoseconds
+Tempo de busca com DFS na árvore 52: 19306 nanoseconds
+Tempo de busca com BFS na árvore 52: 74 nanoseconds
+==========================================
+Tempo de criação da árvore 53: 756257 nanoseconds
+Tempo de criação da lista 53: 184074452 nanoseconds
+Tempo de busca com DFS na árvore 53: 14379 nanoseconds
+Tempo de busca com BFS na árvore 53: 66 nanoseconds
+==========================================
+Tempo de criação da árvore 54: 787109 nanoseconds
+Tempo de criação da lista 54: 183663223 nanoseconds
+Tempo de busca com DFS na árvore 54: 15356 nanoseconds
+Tempo de busca com BFS na árvore 54: 70 nanoseconds
+==========================================
+Tempo de criação da árvore 55: 780893 nanoseconds
+Tempo de criação da lista 55: 184305770 nanoseconds
+Tempo de busca com DFS na árvore 55: 24662 nanoseconds
+Tempo de busca com BFS na árvore 55: 114 nanoseconds
+==========================================
+Tempo de criação da árvore 56: 799922 nanoseconds
+Tempo de criação da lista 56: 184846211 nanoseconds
+Tempo de busca com DFS na árvore 56: 16989 nanoseconds
+Tempo de busca com BFS na árvore 56: 97 nanoseconds
+==========================================
+Tempo de criação da árvore 57: 782063 nanoseconds
+Tempo de criação da lista 57: 183918931 nanoseconds
+Tempo de busca com DFS na árvore 57: 15913 nanoseconds
+Tempo de busca com BFS na árvore 57: 71 nanoseconds
+==========================================
+Tempo de criação da árvore 58: 784653 nanoseconds
+Tempo de criação da lista 58: 183931654 nanoseconds
+Tempo de busca com DFS na árvore 58: 14514 nanoseconds
+Tempo de busca com BFS na árvore 58: 51 nanoseconds
+==========================================
+Tempo de criação da árvore 59: 772623 nanoseconds
+Tempo de criação da lista 59: 183433777 nanoseconds
+Tempo de busca com DFS na árvore 59: 19051 nanoseconds
+Tempo de busca com BFS na árvore 59: 47 nanoseconds
+==========================================
+Tempo de criação da árvore 60: 526736 nanoseconds
+Tempo de criação da lista 60: 183595807 nanoseconds
+Tempo de busca com DFS na árvore 60: 17343 nanoseconds
+Tempo de busca com BFS na árvore 60: 48 nanoseconds
+==========================================
+Tempo de criação da árvore 61: 855834 nanoseconds
+Tempo de criação da lista 61: 184548608 nanoseconds
+Tempo de busca com DFS na árvore 61: 23697 nanoseconds
+Tempo de busca com BFS na árvore 61: 104 nanoseconds
+==========================================
+Tempo de criação da árvore 62: 807647 nanoseconds
+Tempo de criação da lista 62: 184219847 nanoseconds
+Tempo de busca com DFS na árvore 62: 18006 nanoseconds
+Tempo de busca com BFS na árvore 62: 67 nanoseconds
+==========================================
+Tempo de criação da árvore 63: 777949 nanoseconds
+Tempo de criação da lista 63: 183754649 nanoseconds
+Tempo de busca com DFS na árvore 63: 17898 nanoseconds
+Tempo de busca com BFS na árvore 63: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 64: 788614 nanoseconds
+Tempo de criação da lista 64: 183854589 nanoseconds
+Tempo de busca com DFS na árvore 64: 15997 nanoseconds
+Tempo de busca com BFS na árvore 64: 73 nanoseconds
+==========================================
+Tempo de criação da árvore 65: 776315 nanoseconds
+Tempo de criação da lista 65: 183803164 nanoseconds
+Tempo de busca com DFS na árvore 65: 17374 nanoseconds
+Tempo de busca com BFS na árvore 65: 78 nanoseconds
+==========================================
+Tempo de criação da árvore 66: 786068 nanoseconds
+Tempo de criação da lista 66: 183624736 nanoseconds
+Tempo de busca com DFS na árvore 66: 15752 nanoseconds
+Tempo de busca com BFS na árvore 66: 78 nanoseconds
+==========================================
+Tempo de criação da árvore 67: 756293 nanoseconds
+Tempo de criação da lista 67: 183772973 nanoseconds
+Tempo de busca com DFS na árvore 67: 15668 nanoseconds
+Tempo de busca com BFS na árvore 67: 86 nanoseconds
+==========================================
+Tempo de criação da árvore 68: 547809 nanoseconds
+Tempo de criação da lista 68: 183331826 nanoseconds
+Tempo de busca com DFS na árvore 68: 16625 nanoseconds
+Tempo de busca com BFS na árvore 68: 59 nanoseconds
+==========================================
+Tempo de criação da árvore 69: 692681 nanoseconds
+Tempo de criação da lista 69: 183650881 nanoseconds
+Tempo de busca com DFS na árvore 69: 17645 nanoseconds
+Tempo de busca com BFS na árvore 69: 97 nanoseconds
+==========================================
+Tempo de criação da árvore 70: 791662 nanoseconds
+Tempo de criação da lista 70: 183702864 nanoseconds
+Tempo de busca com DFS na árvore 70: 16256 nanoseconds
+Tempo de busca com BFS na árvore 70: 86 nanoseconds
+==========================================
+Tempo de criação da árvore 71: 780149 nanoseconds
+Tempo de criação da lista 71: 183720460 nanoseconds
+Tempo de busca com DFS na árvore 71: 14930 nanoseconds
+Tempo de busca com BFS na árvore 71: 49 nanoseconds
+==========================================
+Tempo de criação da árvore 72: 947453 nanoseconds
+Tempo de criação da lista 72: 185160961 nanoseconds
+Tempo de busca com DFS na árvore 72: 17945 nanoseconds
+Tempo de busca com BFS na árvore 72: 91 nanoseconds
+==========================================
+Tempo de criação da árvore 73: 806996 nanoseconds
+Tempo de criação da lista 73: 184270092 nanoseconds
+Tempo de busca com DFS na árvore 73: 16216 nanoseconds
+Tempo de busca com BFS na árvore 73: 76 nanoseconds
+==========================================
+Tempo de criação da árvore 74: 1008894 nanoseconds
+Tempo de criação da lista 74: 185180198 nanoseconds
+Tempo de busca com DFS na árvore 74: 23646 nanoseconds
+Tempo de busca com BFS na árvore 74: 116 nanoseconds
+==========================================
+Tempo de criação da árvore 75: 814652 nanoseconds
+Tempo de criação da lista 75: 184967680 nanoseconds
+Tempo de busca com DFS na árvore 75: 16591 nanoseconds
+Tempo de busca com BFS na árvore 75: 71 nanoseconds
+==========================================
+Tempo de criação da árvore 76: 776522 nanoseconds
+Tempo de criação da lista 76: 183937533 nanoseconds
+Tempo de busca com DFS na árvore 76: 16248 nanoseconds
+Tempo de busca com BFS na árvore 76: 67 nanoseconds
+==========================================
+Tempo de criação da árvore 77: 766327 nanoseconds
+Tempo de criação da lista 77: 184390052 nanoseconds
+Tempo de busca com DFS na árvore 77: 16279 nanoseconds
+Tempo de busca com BFS na árvore 77: 75 nanoseconds
+==========================================
+Tempo de criação da árvore 78: 779676 nanoseconds
+Tempo de criação da lista 78: 184947102 nanoseconds
+Tempo de busca com DFS na árvore 78: 17315 nanoseconds
+Tempo de busca com BFS na árvore 78: 69 nanoseconds
+==========================================
+Tempo de criação da árvore 79: 793169 nanoseconds
+Tempo de criação da lista 79: 184029531 nanoseconds
+Tempo de busca com DFS na árvore 79: 15482 nanoseconds
+Tempo de busca com BFS na árvore 79: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 80: 770173 nanoseconds
+Tempo de criação da lista 80: 183673223 nanoseconds
+Tempo de busca com DFS na árvore 80: 18457 nanoseconds
+Tempo de busca com BFS na árvore 80: 67 nanoseconds
+==========================================
+Tempo de criação da árvore 81: 771623 nanoseconds
+Tempo de criação da lista 81: 183920124 nanoseconds
+Tempo de busca com DFS na árvore 81: 16263 nanoseconds
+Tempo de busca com BFS na árvore 81: 76 nanoseconds
+==========================================
+Tempo de criação da árvore 82: 754596 nanoseconds
+Tempo de criação da lista 82: 183986481 nanoseconds
+Tempo de busca com DFS na árvore 82: 18046 nanoseconds
+Tempo de busca com BFS na árvore 82: 118 nanoseconds
+==========================================
+Tempo de criação da árvore 83: 807045 nanoseconds
+Tempo de criação da lista 83: 184116626 nanoseconds
+Tempo de busca com DFS na árvore 83: 21616 nanoseconds
+Tempo de busca com BFS na árvore 83: 101 nanoseconds
+==========================================
+Tempo de criação da árvore 84: 522323 nanoseconds
+Tempo de criação da lista 84: 184760520 nanoseconds
+Tempo de busca com DFS na árvore 84: 18224 nanoseconds
+Tempo de busca com BFS na árvore 84: 93 nanoseconds
+==========================================
+Tempo de criação da árvore 85: 506111 nanoseconds
+Tempo de criação da lista 85: 184497868 nanoseconds
+Tempo de busca com DFS na árvore 85: 18767 nanoseconds
+Tempo de busca com BFS na árvore 85: 94 nanoseconds
+==========================================
+Tempo de criação da árvore 86: 555805 nanoseconds
+Tempo de criação da lista 86: 183859981 nanoseconds
+Tempo de busca com DFS na árvore 86: 15778 nanoseconds
+Tempo de busca com BFS na árvore 86: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 87: 552276 nanoseconds
+Tempo de criação da lista 87: 183690108 nanoseconds
+Tempo de busca com DFS na árvore 87: 16513 nanoseconds
+Tempo de busca com BFS na árvore 87: 86 nanoseconds
+==========================================
+Tempo de criação da árvore 88: 537048 nanoseconds
+Tempo de criação da lista 88: 184033512 nanoseconds
+Tempo de busca com DFS na árvore 88: 22735 nanoseconds
+Tempo de busca com BFS na árvore 88: 98 nanoseconds
+==========================================
+Tempo de criação da árvore 89: 572840 nanoseconds
+Tempo de criação da lista 89: 184214318 nanoseconds
+Tempo de busca com DFS na árvore 89: 17413 nanoseconds
+Tempo de busca com BFS na árvore 89: 78 nanoseconds
+==========================================
+Tempo de criação da árvore 90: 735006 nanoseconds
+Tempo de criação da lista 90: 183606695 nanoseconds
+Tempo de busca com DFS na árvore 90: 15233 nanoseconds
+Tempo de busca com BFS na árvore 90: 87 nanoseconds
+==========================================
+Tempo de criação da árvore 91: 772843 nanoseconds
+Tempo de criação da lista 91: 183501951 nanoseconds
+Tempo de busca com DFS na árvore 91: 16882 nanoseconds
+Tempo de busca com BFS na árvore 91: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 92: 762533 nanoseconds
+Tempo de criação da lista 92: 186822646 nanoseconds
+Tempo de busca com DFS na árvore 92: 18350 nanoseconds
+Tempo de busca com BFS na árvore 92: 70 nanoseconds
+==========================================
+Tempo de criação da árvore 93: 760363 nanoseconds
+Tempo de criação da lista 93: 185470959 nanoseconds
+Tempo de busca com DFS na árvore 93: 16829 nanoseconds
+Tempo de busca com BFS na árvore 93: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 94: 614893 nanoseconds
+Tempo de criação da lista 94: 184425188 nanoseconds
+Tempo de busca com DFS na árvore 94: 18808 nanoseconds
+Tempo de busca com BFS na árvore 94: 73 nanoseconds
+==========================================
+Tempo de criação da árvore 95: 503073 nanoseconds
+Tempo de criação da lista 95: 184732400 nanoseconds
+Tempo de busca com DFS na árvore 95: 19649 nanoseconds
+Tempo de busca com BFS na árvore 95: 69 nanoseconds
+==========================================
+Tempo de criação da árvore 96: 536996 nanoseconds
+Tempo de criação da lista 96: 184034592 nanoseconds
+Tempo de busca com DFS na árvore 96: 18292 nanoseconds
+Tempo de busca com BFS na árvore 96: 68 nanoseconds
+==========================================
+Tempo de criação da árvore 97: 521422 nanoseconds
+Tempo de criação da lista 97: 184153937 nanoseconds
+Tempo de busca com DFS na árvore 97: 17103 nanoseconds
+Tempo de busca com BFS na árvore 97: 79 nanoseconds
+==========================================
+Tempo de criação da árvore 98: 532554 nanoseconds
+Tempo de criação da lista 98: 183683458 nanoseconds
+Tempo de busca com DFS na árvore 98: 15959 nanoseconds
+Tempo de busca com BFS na árvore 98: 77 nanoseconds
+==========================================
+Tempo de criação da árvore 99: 516605 nanoseconds
+Tempo de criação da lista 99: 184190896 nanoseconds
+Tempo de busca com DFS na árvore 99: 24182 nanoseconds
+Tempo de busca com BFS na árvore 99: 116 nanoseconds
+==========================================
+Tempo de criação da árvore 100: 529647 nanoseconds
+Tempo de criação da lista 100: 184164345 nanoseconds
+Tempo de busca com DFS na árvore 100: 17364 nanoseconds
+Tempo de busca com BFS na árvore 100: 84 nanoseconds
+==========================================
