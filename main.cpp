@@ -13,6 +13,8 @@ using namespace std::chrono;
 
 int main()
 {
+    //CÓDIGO PARA SORTINGS
+    
     ofstream outFile("sorting_times.txt");
 
     if (!outFile) 
@@ -177,6 +179,104 @@ const int iNumLists = 1000;
     outFile << "Média do tempo utilizado na ordenação com Optimized Insertion Sort: " << llAvgOptimizedInsertionSortTime << " nanosegundos." << endl;
     outFile << "Média do tempo utilizado na ordenação com Selection Sort: " << llAvgSelectionSortTime << " nanosegundos." << endl;
     outFile << "Média do tempo utilizado na ordenação com Optimized Selection Sort: " << llAvgOptimizedSelectionSortTime << " nanosegundos." << endl;
+
+    outFile.close();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //CÓDIGO PARA ÁRVORES
+    
+    NodeTree<int>* root0 = nullptr;
+    
+    root0 = insertNodeTree(root0, 42);
+    root0 = insertNodeTree(root0, 14);
+    root0 = insertNodeTree(root0, 11);
+    root0 = insertNodeTree(root0, 10);
+    root0 = insertNodeTree(root0, 100);
+    root0 = insertNodeTree(root0, 57);
+    root0 = insertNodeTree(root0, 171);
+    
+    cout << "BFS Traversal: ";
+    bfsTraversal(root0);
+    cout << endl;
+    
+    cout << "Tentativa de encontrar o 171 na árvore (nó existente): ";
+    searchBFS(root0, 171);
+    cout << endl;
+    
+    cout << "Tentativa de encontrar o 870 na árvore (nó não existente): ";
+    searchBFS(root0, 870);
+    cout << endl;
+    
+    cout << "Usando o DFS para encontrar 10 (nó existente): ";
+    searchDFS(root0, 10);
+    cout << endl;
+    
+    cout << "Tree Height: " << treeHeight(root0) << endl;
+
+    
+    ofstream outFile("tree_and_linked_list_times.txt");
+
+    if (!outFile) 
+    {
+        cout << "Erro ao abrir o arquivo." << endl;
+        return 1;
+    }
+    
+    // Número de listas a serem criadas
+    const int NUM_LISTS = 10;
+    // Tamanho de cada lista
+    const int SIZE = 1000;
+
+    // Criação das listas e árvores e medição de tempo
+    for (int j = 0; j < NUM_LISTS; ++j) 
+    {
+        // Gerar uma lista de números aleatórios
+        int randomNumbers[SIZE];
+        srand(time(nullptr)); // Inicializar a semente aleatória com o tempo atual
+        for (int i = 0; i < SIZE; ++i) {
+            randomNumbers[i] = rand() % 1000; // Números aleatórios entre 0 e 999
+        }
+
+        // Exemplo de criação de árvore e medição do tempo
+        NodeTree<int>* root = nullptr;
+        auto startTree = high_resolution_clock::now();
+        for (int i = 0; i < SIZE; ++i) {
+            insertNodeTree(root, randomNumbers[i]);
+        }
+        auto stopTree = high_resolution_clock::now();
+        auto durationTree = duration_cast<nanoseconds>(stopTree - startTree);
+        outFile << "Tempo de criação da árvore " << j + 1 << ": " << durationTree.count() << " nanoseconds" << endl;
+
+        // Exemplo de criação de lista e medição do tempo
+        Node<int>* head = nullptr;
+        auto startList = high_resolution_clock::now();
+        for (int i = 0; i < SIZE; ++i) {
+            insertEnd(&head, randomNumbers[i]);
+        }
+        auto stopList = high_resolution_clock::now();
+        auto durationList = duration_cast<nanoseconds>(stopList - startList);
+        outFile << "Tempo de criação da lista " << j + 1 << ": " << durationList.count() << " nanoseconds" << endl;
+
+        // Exemplo de busca em árvore utilizando DFS e BFS e medição do tempo
+        // Utilize o mesmo conjunto de números aleatórios para cada iteração
+        int valueToSearch = randomNumbers[rand() % SIZE]; // Escolhe um valor aleatório da lista para buscar
+
+        // Medição de tempo para DFS
+        auto startDFS = high_resolution_clock::now();
+        searchDFS(root, valueToSearch);
+        auto stopDFS = high_resolution_clock::now();
+        auto durationDFS = duration_cast<nanoseconds>(stopDFS - startDFS);
+        outFile << "Tempo de busca com DFS na árvore " << j + 1 << ": " << durationDFS.count() << " nanoseconds" << endl;
+
+        // Medição de tempo para BFS
+        auto startBFS = high_resolution_clock::now();
+        searchBFS(root, valueToSearch);
+        auto stopBFS = high_resolution_clock::now();
+        auto durationBFS = duration_cast<nanoseconds>(stopBFS - startBFS);
+        outFile << "Tempo de busca com BFS na árvore " << j + 1 << ": " << durationBFS.count() << " nanoseconds" << endl;
+        
+        outFile << "==========================================" << endl;
+    }
 
     outFile.close();
 
