@@ -34,6 +34,13 @@ void swapValue(T&, T&);
 // Inclui a implementação das funções template
 #include "functions_list.tpp"
 
+
+template<typename T>
+void swapValue(T&, T&);
+
+// Inclui a implementação das funções template
+#include "functions_list.tpp"
+
 template<typename T>
 void deleteList(Node<T>**);
 
