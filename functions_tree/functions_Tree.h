@@ -21,8 +21,12 @@ void bfsTraversal(NodeTree<T>*);
 template<typename T>
 NodeTree<T>* searchBFS(NodeTree<T>*, T);
 
+template <typename T>
+NodeTree<T>* searchDFS(NodeTree<T>*, T);
+
 template<typename T>
 int treeHeight(NodeTree<T>*);
 
 // Inclui a implementação das funções template
 #include "functionsTree.tpp"
+
